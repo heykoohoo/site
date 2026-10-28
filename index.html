@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Koohoo is an AI companion app that texts you first. She checks in on you, remembers your life, sends voice notes and finds great places near you. Coming soon to iPhone and Android.">
+<link rel="canonical" href="https://koohoo.app/">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="koohoo">
+<meta property="og:title" content="koohoo: an AI friend who texts you first">
+<meta property="og:description" content="Koohoo is an AI companion app that texts you first. She checks in on you, remembers your life, sends voice notes and finds great places near you. Coming soon to iPhone and Android.">
+<meta property="og:url" content="https://koohoo.app/">
+<meta property="og:image" content="https://koohoo.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="koohoo: an AI friend who texts you first">
+<meta name="twitter:description" content="Koohoo is an AI companion app that texts you first. She checks in on you, remembers your life, sends voice notes and finds great places near you. Coming soon to iPhone and Android.">
+<meta name="twitter:image" content="https://koohoo.app/og.png">
+<meta name="theme-color" content="#E2506A">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "name": "koohoo", "url": "https://koohoo.app/", "logo": "https://koohoo.app/apple-touch-icon.png", "email": "hey@koohoo.app"}, {"@context": "https://schema.org", "@type": "WebSite", "name": "koohoo", "url": "https://koohoo.app/", "description": "Koohoo is an AI companion app that texts you first. She checks in on you, remembers your life, sends voice notes and finds great places near you. Coming soon to iPhone and Android."}, {"@context": "https://schema.org", "@type": "MobileApplication", "name": "koohoo", "applicationCategory": "LifestyleApplication", "operatingSystem": "iOS, Android", "description": "Koohoo is an AI companion app that texts you first. She checks in on you, remembers your life, sends voice notes and finds great places near you. Coming soon to iPhone and Android.", "url": "https://koohoo.app/"}]</script>
+<title>koohoo: an AI friend who texts you first</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap"></noscript>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* layout: scroll story (her day in three beats, phone pinned right and playing each beat) → ticker of her texts → four "she…" proofs that pop in → the name on the rose band → quiet footer. Light only (Nick, Oct 28). */
+:root{
+  --bg:#FDF6ED; --surface:#FFFFFF; --ink:#2A0F27; --muted:#7D6175; --line:#EEDFD2;
+  --rose:#E2506A; --berry:#7A2D5A; --plum:#3A1236; --cream:#FDF6ED;
+  --head:var(--plum);
+  --chat:#f6f1ec; --pat:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22380%22 height=%22380%22 viewBox=%220 0 380 380%22%3E%3Cg fill=%22none%22 stroke=%22#dcd0c6%22 stroke-width=%220.85%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cg transform=%22translate(334.8 76.4) rotate(5.7) scale(1.97) translate(-12 -12)%22%3E%3Crect x=%229%22 y=%223%22 width=%226%22 height=%2211%22 rx=%223%22/%3E%3Cpath d=%22M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6%22/%3E%3C/g%3E%3Cg transform=%22translate(253.8 265.7) rotate(14.6) scale(1.79) translate(-12 -12)%22%3E%3Cpath d=%22M6 3v18M12 3v18M18 3v18%22/%3E%3Crect x=%224%22 y=%2213%22 width=%224%22 height=%223%22 rx=%221%22/%3E%3Crect x=%2210%22 y=%226%22 width=%224%22 height=%223%22 rx=%221%22/%3E%3Crect x=%2216%22 y=%2215%22 width=%224%22 height=%223%22 rx=%221%22/%3E%3C/g%3E%3Cg transform=%22translate(117.1 47.7) rotate(21.6) scale(2.09) translate(-12 -12)%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22/%3E%3Cpath d=%22M10 8.5v7l6-3.5z%22/%3E%3C/g%3E%3Cg transform=%22translate(323.9 255.8) rotate(3.9) scale(1.76) translate(-12 -12)%22%3E%3Cpath d=%22M4 15v-3a8 8 0 0 1 16 0v3%22/%3E%3Crect x=%223%22 y=%2214%22 width=%224%22 height=%227%22 rx=%221.5%22/%3E%3Crect x=%2217%22 y=%2214%22 width=%224%22 height=%227%22 rx=%221.5%22/%3E%3C/g%3E%3Cg transform=%22translate(115.4 165.2) rotate(17.5) scale(2.04) translate(-12 -12)%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22/%3E%3Cpath d=%22M10 8.5v7l6-3.5z%22/%3E%3C/g%3E%3Cg transform=%22translate(113.7 334.3) rotate(20.0) scale(2.19) translate(-12 -12)%22%3E%3Cpath d=%22M3 8c3 3 15 3 18 0%22/%3E%3Cpath d=%22M7 10l1.5 5 1.5-4.6M14 10.4l1.5 4.6 1.5-5%22/%3E%3C/g%3E%3Cg transform=%22translate(334.1 194.8) rotate(16.3) scale(2.08) translate(-12 -12)%22%3E%3Cpath d=%22M6 13h12l-2 8H8z%22/%3E%3Cpath d=%22M5.5 13a3 3 0 0 1 1-5.5 4.5 4.5 0 0 1 8.5-1 3.5 3.5 0 0 1 3.5 6.5%22/%3E%3Cpath d=%22M14 8.5v3.5%22/%3E%3Ccircle cx=%2214%22 cy=%2213%22 r=%22.4%22/%3E%3C/g%3E%3Cg transform=%22translate(200.1 42.2) rotate(0.3) scale(2.01) translate(-12 -12)%22%3E%3Cpath d=%22M6 13h12l-2 8H8z%22/%3E%3Cpath d=%22M5.5 13a3 3 0 0 1 1-5.5 4.5 4.5 0 0 1 8.5-1 3.5 3.5 0 0 1 3.5 6.5%22/%3E%3Cpath d=%22M14 8.5v3.5%22/%3E%3Ccircle cx=%2214%22 cy=%2213%22 r=%22.4%22/%3E%3C/g%3E%3Cg transform=%22translate(161.4 240.9) rotate(-9.6) scale(1.94) translate(-12 -12)%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22/%3E%3Cpath d=%22M10 8.5v7l6-3.5z%22/%3E%3C/g%3E%3Cg transform=%22translate(216.1 126.0) rotate(2.2) scale(1.97) translate(-12 -12)%22%3E%3Cpath d=%22M13 3L5 14h6l-1 7 8-11h-6z%22/%3E%3C/g%3E%3Cg transform=%22translate(244.7 198.9) rotate(-20.5) scale(1.97) translate(-12 -12)%22%3E%3Crect x=%223%22 y=%229%22 width=%2218%22 height=%2212%22 rx=%221.5%22/%3E%3Cpath d=%22M3 9l1.5-5 16.5 2.5L20 9M8 4.5L7 9M13 5.3L12 9M18 6L17 9%22/%3E%3C/g%3E%3Cg transform=%22translate(63.1 278.9) rotate(21.5) scale(2.23) translate(-12 -12)%22%3E%3Cpath d=%22M4 15v-3a8 8 0 0 1 16 0v3%22/%3E%3Crect x=%223%22 y=%2214%22 width=%224%22 height=%227%22 rx=%221.5%22/%3E%3Crect x=%2217%22 y=%2214%22 width=%224%22 height=%227%22 rx=%221.5%22/%3E%3C/g%3E%3Cg transform=%22translate(43.7 201.2) rotate(7.8) scale(1.80) translate(-12 -12)%22%3E%3Crect x=%224%22 y=%223%22 width=%2216%22 height=%2218%22 rx=%221.5%22/%3E%3Cpath d=%22M8 3v18M16 3v18M4 7h4M4 11h4M4 15h4M16 7h4M16 11h4M16 15h4%22/%3E%3C/g%3E%3Cg transform=%22translate(45.7 69.9) rotate(-18.2) scale(1.89) translate(-12 -12)%22%3E%3Cpath d=%22M19 14.5A8 8 0 0 1 9.5 5a8 8 0 1 0 9.5 9.5z%22/%3E%3C/g%3E%3Cg transform=%22translate(257.7 333.7) rotate(16.0) scale(2.05) translate(-12 -12)%22%3E%3Ccircle cx=%228%22 cy=%2218%22 r=%223%22/%3E%3Cpath d=%22M11 18V4l8 2v4l-8-2%22/%3E%3C/g%3E%3Cg transform=%22translate(274.6 38.9) rotate(9.3) scale(2.15) translate(-12 -12)%22%3E%3Cpath d=%22M19 14.5A8 8 0 0 1 9.5 5a8 8 0 1 0 9.5 9.5z%22/%3E%3C/g%3E%3Cg transform=%22translate(191.5 328.5) rotate(3.8) scale(2.01) translate(-12 -12)%22%3E%3Cpath d=%22M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z%22/%3E%3Ccircle cx=%2212%22 cy=%2213.5%22 r=%223.5%22/%3E%3C/g%3E%3Cg transform=%22translate(97.8 109.2) rotate(-11.5) scale(1.90) translate(-12 -12)%22%3E%3Cpath d=%22M19 14.5A8 8 0 0 1 9.5 5a8 8 0 1 0 9.5 9.5z%22/%3E%3C/g%3E%3Cg transform=%22translate(346.7 138.0) rotate(22.0) scale(2.00) translate(-12 -12)%22%3E%3Cpath d=%22M12 4v4M12 16v4M4 12h4M16 12h4M7 7l2 2M15 15l2 2M17 7l-2 2M9 15l-2 2%22/%3E%3C/g%3E%3Cg transform=%22translate(45.3 140.6) rotate(-11.3) scale(2.11) translate(-12 -12)%22%3E%3Cpath d=%22M13 3L5 14h6l-1 7 8-11h-6z%22/%3E%3C/g%3E%3Cg transform=%22translate(327.1 347.8) rotate(-22.9) scale(2.16) translate(-12 -12)%22%3E%3Ccircle cx=%228%22 cy=%2218%22 r=%223%22/%3E%3Cpath d=%22M11 18V4l8 2v4l-8-2%22/%3E%3C/g%3E%3Cg transform=%22translate(185.8 178.6) rotate(8.9) scale(2.13) translate(-12 -12)%22%3E%3Cpath d=%22M19 14.5A8 8 0 0 1 9.5 5a8 8 0 1 0 9.5 9.5z%22/%3E%3C/g%3E%3Cg transform=%22translate(99.0 221.9) rotate(-20.3) scale(1.90) translate(-12 -12)%22%3E%3Cpath d=%22M3 12v0M6 9v6M9 6v12M12 10v4M15 7v10M18 9v6M21 12v0%22/%3E%3C/g%3E%3Cg transform=%22translate(46.4 343.6) rotate(4.6) scale(2.18) translate(-12 -12)%22%3E%3Ccircle cx=%228%22 cy=%2218%22 r=%223%22/%3E%3Cpath d=%22M11 18V4l8 2v4l-8-2%22/%3E%3C/g%3E%3Cg transform=%22translate(273.2 106.5) rotate(13.5) scale(1.90) translate(-12 -12)%22%3E%3Cpath d=%22M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z%22/%3E%3Ccircle cx=%2212%22 cy=%2213.5%22 r=%223.5%22/%3E%3C/g%3E%3Cg transform=%22translate(155.6 97.7) rotate(-14.9) scale(2.04) translate(-12 -12)%22%3E%3Cpath d=%22M4 15v-3a8 8 0 0 1 16 0v3%22/%3E%3Crect x=%223%22 y=%2214%22 width=%224%22 height=%227%22 rx=%221.5%22/%3E%3Crect x=%2217%22 y=%2214%22 width=%224%22 height=%227%22 rx=%221.5%22/%3E%3C/g%3E%3C/g%3E%3Cg fill=%22#e4dad2%22%3E%3Ccircle cx=%2242.4%22 cy=%22252.8%22 r=%221.6%22/%3E%3Ccircle cx=%2213.8%22 cy=%22168.8%22 r=%221.6%22/%3E%3Ccircle cx=%22295.4%22 cy=%2222.7%22 r=%221.6%22/%3E%3Ccircle cx=%2285.8%22 cy=%22180.3%22 r=%221.6%22/%3E%3Ccircle cx=%22191.0%22 cy=%2292.7%22 r=%221.6%22/%3E%3Ccircle cx=%22147.2%22 cy=%22156.4%22 r=%221.6%22/%3E%3Ccircle cx=%22284.8%22 cy=%22282.1%22 r=%221.6%22/%3E%3Ccircle cx=%22362.3%22 cy=%22362.0%22 r=%221.6%22/%3E%3Ccircle cx=%22197.6%22 cy=%2283.3%22 r=%221.6%22/%3E%3Ccircle cx=%22236.7%22 cy=%22355.3%22 r=%221.6%22/%3E%3Ccircle cx=%2211.7%22 cy=%22180.0%22 r=%221.6%22/%3E%3Ccircle cx=%22144.6%22 cy=%2253.7%22 r=%221.6%22/%3E%3Ccircle cx=%22229.9%22 cy=%22318.9%22 r=%221.6%22/%3E%3Ccircle cx=%22220.3%22 cy=%2281.6%22 r=%221.6%22/%3E%3Ccircle cx=%22116.4%22 cy=%22271.5%22 r=%221.6%22/%3E%3Ccircle cx=%22345.4%22 cy=%2216.0%22 r=%221.6%22/%3E%3Ccircle cx=%22163.4%22 cy=%2244.6%22 r=%221.6%22/%3E%3Ccircle cx=%2212.2%22 cy=%22261.8%22 r=%221.6%22/%3E%3Ccircle cx=%22321.6%22 cy=%22299.2%22 r=%221.6%22/%3E%3Ccircle cx=%2295.1%22 cy=%22365.4%22 r=%221.6%22/%3E%3Ccircle cx=%22282.7%22 cy=%22196.0%22 r=%221.6%22/%3E%3Ccircle cx=%22116.0%22 cy=%22367.8%22 r=%221.6%22/%3E%3Ccircle cx=%22181.6%22 cy=%22146.4%22 r=%221.6%22/%3E%3C/g%3E%3C/svg%3E"); --herA:#f3e7e2; --herB:#ecdcd6; --herInk:#3a1622; --mebg:#ffffff; --mink:#2a1a20; --hdr:rgba(255,250,248,.72); --pline:#eadfd9; --dim:#8d7f84;
+  --display:"Fredoka", ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body:"Nunito", ui-rounded, system-ui, -apple-system, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0;overflow-x:clip}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:600;color:var(--head);margin:0;text-wrap:balance;letter-spacing:-.01em;line-height:1.08}
+p{margin:0}
+.grad{background:linear-gradient(135deg,var(--rose),var(--berry))}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:18px;position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.lock{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--head)}
+.lock svg{width:34px;height:auto;fill:currentColor}
+.lock span{font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:-.02em;line-height:1}
+.pill{font-family:var(--display);font-weight:500;font-size:14px;color:var(--muted);border:1.5px solid var(--line);border-radius:99px;padding:6px 14px;letter-spacing:.02em}
+
+/* story: beats scroll on the left, phone pinned on the right */
+.story{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;padding-block:0 24px}
+.story > *{min-width:0}
+.beat{min-height:72vh;display:flex;flex-direction:column;justify-content:center;padding-block:32px;transition:opacity .5s ease}
+.beat.first{min-height:calc(100vh - 80px);padding-top:8px}
+.js .beat:not(.on){opacity:.28}
+.eyebrow{font-family:var(--display);font-weight:500;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:#C2405C}
+.beat h1{font-size:clamp(52px,8vw,96px);line-height:.95;margin-top:14px}
+.beat h1 em,.beat h2 em{font-style:normal;background:linear-gradient(135deg,var(--rose),var(--berry));-webkit-background-clip:text;background-clip:text;color:transparent}
+.beat h2{font-size:clamp(34px,4.6vw,56px);line-height:1;margin-top:12px}
+.lede{font-size:20px;color:var(--ink);max-width:30ch;margin-top:20px}
+.beat p.sub{font-size:19px;color:var(--muted);max-width:32ch;margin-top:16px}
+.when{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-family:var(--display);font-weight:600;font-size:15px;color:var(--berry);background:var(--surface);border:1.5px solid var(--line);border-radius:99px;padding:5px 14px 5px 10px;font-variant-numeric:tabular-nums}
+.when svg{width:12px;fill:var(--rose)}
+.soon{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;align-items:center}
+.soon small{color:var(--muted);font-size:14px}
+.scroll-hint{display:inline-flex;align-items:center;gap:8px;margin-top:34px;font-family:var(--display);font-weight:500;font-size:14px;color:var(--muted)}
+.scroll-hint i{width:18px;height:28px;border:2px solid var(--muted);border-radius:10px;position:relative}
+.scroll-hint i::after{content:"";position:absolute;left:50%;top:5px;width:3px;height:6px;margin-left:-1.5px;border-radius:2px;background:var(--rose);animation:wheel 1.6s ease-in-out infinite}
+
+/* phone */
+.stage{position:sticky;top:max(84px, calc(50vh - 300px));align-self:start;display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:8px}
+.phone{position:relative;width:min(310px,100%);aspect-ratio:9/18;background:var(--surface);border-radius:42px;padding:11px;box-shadow:0 30px 60px -22px rgba(58,18,54,.4),0 0 0 1.5px var(--line) inset;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.screen{height:100%;border-radius:32px;background:var(--pat) 0 0/190px repeat,var(--chat);display:flex;flex-direction:column;overflow:hidden;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif}
+.bar{display:flex;justify-content:space-between;font-size:12px;font-weight:700;padding:10px 22px 4px;color:var(--mink);background:var(--hdr);font-variant-numeric:tabular-nums}
+.who{display:flex;align-items:center;gap:8px;padding:6px 12px 10px;background:var(--hdr);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--pline)}
+.av{position:relative;width:38px;height:38px;border-radius:50%;flex:none;background:#ddd url("data:image/jpeg;base64,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") center/cover;box-shadow:0 0 10px rgba(226,80,106,.35)}
+.av i{position:absolute;right:-1px;bottom:-1px;width:10px;height:10px;border-radius:50%;background:#22a06b;border:2px solid var(--chat)}
+.nm{flex:1;min-width:0;line-height:1.1}
+.nm b{display:block;font-family:var(--display);font-weight:600;font-size:18px;color:var(--mink);letter-spacing:-.01em}
+.nm small{font-size:11px;color:var(--dim)}.nm small.typing{color:var(--rose)}
+.hb{width:28px;height:28px;border-radius:50%;border:1px solid var(--pline);display:grid;place-items:center;flex:none;color:var(--mink)}
+.hb svg{width:14px;height:14px;fill:currentColor}
+.call{width:32px;height:32px;border-radius:50%;background:#22a06b;display:grid;place-items:center;flex:none}
+.call svg{width:15px;height:15px;fill:#fff}
+.log{flex:1;display:flex;flex-direction:column;gap:5px;padding:12px 10px;overflow:hidden;justify-content:flex-end}
+.stamp{align-self:center;font-size:10.5px;color:var(--dim);font-weight:700;margin:4px 0 2px;display:flex;gap:5px;align-items:center;background:var(--hdr);padding:2px 9px;border-radius:9px}
+.stamp svg{width:9px;fill:var(--rose)}
+.b{max-width:80%;padding:7px 11px 5px;border-radius:16px;font-size:14px;line-height:1.3;animation:pop .28s cubic-bezier(.2,.9,.3,1.3)}
+.b small{display:block;font-size:10px;color:var(--dim);margin-top:2px}
+.her{align-self:flex-start;background:linear-gradient(160deg,var(--herA),var(--herB));color:var(--herInk);border-bottom-left-radius:5px}
+.me{align-self:flex-end;background:var(--mebg);color:var(--mink);border-bottom-right-radius:5px;box-shadow:0 1px 2px rgba(60,20,35,.08)}
+.dots{display:inline-flex;gap:4px;padding:11px 13px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--dim);opacity:.5;animation:blink 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+.voice{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.voice .play{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;flex:none}
+.voice .play::after{content:"";border-left:8px solid #FFF8F1;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+.wave{display:flex;gap:2px;align-items:center;height:22px}
+.wave i{width:3px;border-radius:2px;background:var(--rose)}
+.compose{display:flex;align-items:center;gap:6px;padding:8px 10px 12px;background:var(--hdr);border-top:1px solid var(--pline)}
+.arr{width:18px;display:grid;place-items:center;color:var(--mink);flex:none}
+.arr svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cbox{flex:1;min-width:0;height:36px;border-radius:99px;border:1px solid rgba(226,80,106,.6);background:var(--mebg);display:flex;align-items:center;padding:0 13px;font-size:13px;color:#776a70;white-space:nowrap;overflow:hidden}
+.mic{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center}
+.mic svg{width:17px;height:17px;fill:#fff}
+.pips{display:flex;gap:8px}
+.pips i{width:8px;height:8px;border-radius:99px;background:var(--line);transition:width .35s ease,background .35s ease}
+.pips i.on{width:26px;background:var(--rose)}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ticker */
+.ticker{overflow:hidden;padding-block:16px 8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.row{display:flex;gap:12px;width:max-content;animation:slide 46s linear infinite}
+.row + .row{margin-top:12px;animation-duration:54s;animation-direction:reverse}
+.ticker:hover .row{animation-play-state:paused}
+.tk{font-size:16px;padding:10px 16px;border-radius:20px 20px 20px 6px;background:linear-gradient(160deg,var(--herA),var(--herB));color:var(--herInk);white-space:nowrap}
+.tk.me{border-radius:20px 20px 6px 20px;background:var(--surface);color:var(--mink);box-shadow:0 0 0 1.5px var(--line) inset}
+
+
+/* her life: a swipeable reel of one friend's real day */
+.life{padding-block:48px 8px}
+.life h2{font-size:clamp(34px,4.6vw,52px);max-width:15ch}
+.life h2 em{font-style:normal;background:linear-gradient(135deg,var(--rose),var(--berry));-webkit-background-clip:text;background-clip:text;color:transparent}
+.life .sub{color:var(--muted);font-size:18px;max-width:46ch;margin-top:12px}
+.who2{display:flex;align-items:center;gap:10px;margin-top:22px;font-family:var(--display);font-weight:600;font-size:19px;color:var(--head)}
+.who2 img{width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:50% 20%;box-shadow:0 0 0 2px var(--surface),0 0 0 3.5px var(--rose)}
+.who2 small{display:block;font-family:var(--body);font-weight:600;color:var(--muted);font-size:13px;line-height:1.2}
+.who2 .swipe{margin-left:auto;font-family:var(--display);font-weight:500;font-size:14px;color:var(--muted)}
+.reel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px max(16px, calc((100vw - 1120px)/2 + 16px)) 28px;scroll-padding-inline:max(16px, calc((100vw - 1120px)/2 + 16px));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.reel::-webkit-scrollbar{display:none}
+.mo{flex:none;width:min(240px,66vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:8px}
+.ph{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;background:var(--line);box-shadow:0 18px 36px -22px rgba(58,18,54,.5)}
+.ph img,.ph video{width:100%;height:100%;object-fit:cover;display:block}
+.ph .t{position:absolute;left:10px;top:10px;font-size:11px;font-weight:800;background:rgba(255,250,248,.88);color:var(--mink);padding:3px 9px;border-radius:99px;font-variant-numeric:tabular-nums}
+.ph .vb{position:absolute;right:10px;top:10px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:rgba(42,15,39,.55);padding:3px 9px 3px 7px;border-radius:99px}
+.ph .vb::before{content:"";border-left:7px solid #fff;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+.mo .b{animation:none;align-self:flex-start;max-width:100%;font-size:15px}
+.mo .b.me{align-self:flex-end}
+.js .reel .mo{opacity:0;transform:translateX(48px) rotate(2deg);transition:opacity .6s ease calc(var(--i,0) * .1s),transform .8s cubic-bezier(.2,.8,.2,1) calc(var(--i,0) * .1s)}
+.js .reel.in .mo{opacity:1;transform:none}
+
+/* proofs */
+.proofs{padding-block:44px 64px}
+.proofs h2{font-size:clamp(34px,4.6vw,52px);max-width:16ch}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:28px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:transform .25s ease}
+.card:hover{transform:translateY(-4px) rotate(-.3deg)}
+.snip{display:flex;flex-direction:column;gap:6px;background:var(--bg);border-radius:20px;padding:16px;min-height:112px;justify-content:center}
+.snip .b{animation:none;font-size:15px}
+.snip .meta{font-size:11px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
+.snip .meta svg{width:10px;fill:var(--rose)}
+.card h3{font-size:25px;line-height:1.15}
+.card p{color:var(--muted);font-size:16px;max-width:42ch}
+
+/* scroll reveals (only when JS is on, so the page reads fine without it) */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease var(--d,0s),transform .8s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.js .card .snip > *{opacity:0;transform:translateY(10px) scale(.94);transform-origin:left bottom;transition:opacity .4s ease,transform .5s cubic-bezier(.2,.9,.3,1.3)}
+.js .card .snip > .me{transform-origin:right bottom}
+.js .card.in .snip > *{opacity:1;transform:none}
+.js .card.in .snip > :nth-child(1){transition-delay:calc(var(--d,0s) + .35s)}
+.js .card.in .snip > :nth-child(2){transition-delay:calc(var(--d,0s) + .85s)}
+.js .card.in .snip > :nth-child(3){transition-delay:calc(var(--d,0s) + 1.35s)}
+
+
+/* what she can do */
+.can{padding-block:8px 64px}
+.can h2{font-size:clamp(34px,4.6vw,52px);max-width:18ch}
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}
+.feat{background:var(--surface);border:1.5px solid var(--line);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.feat .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:4px}
+.feat .ic svg{width:22px;height:22px;fill:none;stroke:#FFF8F1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:21px;line-height:1.15}
+.feat p{color:var(--muted);font-size:15.5px}
+.feat .q{align-self:flex-start;margin-top:6px;font-size:14px;padding:7px 11px;border-radius:16px 16px 16px 5px;background:linear-gradient(160deg,var(--herA),var(--herB));color:var(--herInk)}
+
+/* name band */
+.band{color:var(--cream);overflow:hidden}
+.band .wrap{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;padding-block:56px}
+.band .th svg{width:clamp(110px,16vw,180px);height:auto;fill:var(--cream);display:block}
+.band h2{color:var(--cream);font-size:clamp(30px,4vw,44px)}
+.band p{font-size:19px;max-width:44ch;margin-top:12px;opacity:.95}
+.band .say{font-family:var(--display);font-weight:500;opacity:.8;font-size:16px;margin-top:16px;letter-spacing:.04em}
+@supports (animation-timeline: view()){
+  .band .th svg{animation:tilt linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+  @keyframes tilt{from{transform:rotate(-24deg) scale(.7) translateY(30px)}to{transform:rotate(14deg) scale(1.06) translateY(-20px)}}
+}
+
+/* footer */
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-block:28px;color:var(--muted);font-size:14px}
+
+.float{animation:bob 5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+@keyframes pop{from{transform:scale(.85) translateY(6px);opacity:.2}to{transform:none;opacity:1}}
+@keyframes blink{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:.9;transform:translateY(-2px)}}
+@keyframes slide{to{transform:translateX(-50%)}}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(8px);opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .card .snip > *,.js .reel .mo{opacity:1;transform:none}
+  .js .beat:not(.on){opacity:1}
+}
+
+@media (max-width:860px){
+  .story{grid-template-columns:1fr;gap:0}
+  .beats{display:contents}
+  .beat{min-height:0;padding-block:20px}
+  .beat.first{min-height:0;padding-block:12px 28px}
+  .js .beat:not(.on){opacity:1}
+  .stage{position:relative;top:0;order:1;padding-bottom:12px}
+  .beat:not(.first){order:2}
+  .scroll-hint{display:none}
+  .lede{max-width:none}
+  .grid{grid-template-columns:1fr}
+  .feats{grid-template-columns:1fr}
+  .band .wrap{grid-template-columns:1fr;gap:16px}
+  .pill{display:none}
+}
+a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8px}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="m" viewBox="0 0 90.67 100"><path d="M50 0.02C49.29 0.04 48.54 0.08 48.32 0.1C48.11 0.13 47.73 0.16 47.5 0.18C46.95 0.21 45.6 0.37 45.02 0.46C44.78 0.5 44.42 0.54 44.23 0.57C43.67 0.64 42.88 0.78 41.76 1.01C41.59 1.04 41.38 1.09 41.3 1.1C41.08 1.14 40.33 1.3 39.96 1.38C39.8 1.42 39.59 1.47 39.51 1.49C39.34 1.53 38 1.89 37.23 2.11C36.37 2.35 34.05 3.12 33.73 3.26C33.66 3.29 33.58 3.33 33.56 3.33C33.54 3.33 33.46 3.35 33.38 3.39C33.3 3.43 33.1 3.51 32.93 3.57C32.76 3.64 32.48 3.75 32.31 3.81C32.14 3.88 31.94 3.96 31.86 3.99C31.79 4.02 31.67 4.07 31.61 4.08C31.54 4.1 31.45 4.15 31.4 4.18C31.35 4.22 31.29 4.25 31.25 4.25C31.22 4.25 31 4.34 30.75 4.46C30.5 4.57 30.21 4.71 30.09 4.76C29.85 4.87 28.88 5.34 28.3 5.62C27.88 5.82 27.27 6.14 26.96 6.33C26.85 6.39 26.64 6.5 26.49 6.58C26.34 6.67 26.18 6.75 26.14 6.77C26.11 6.79 25.85 6.94 25.57 7.1C25.29 7.25 24.97 7.45 24.86 7.53C24.74 7.61 24.46 7.79 24.24 7.92C23.46 8.4 22.35 9.11 22.11 9.3C22.04 9.35 21.85 9.49 21.69 9.61C20.3 10.63 19.84 10.97 19.18 11.51C18.46 12.09 17.54 12.86 17.26 13.11C15.18 14.98 13.78 16.4 12 18.43C10.66 19.97 8.17 23.37 7.25 24.93C7.1 25.18 6.95 25.43 6.92 25.48C6.88 25.53 6.82 25.63 6.79 25.71C6.75 25.79 6.67 25.93 6.61 26.02C6 27.05 5.58 27.84 4.73 29.52C4.47 30.04 4.16 30.72 3.94 31.25C3.87 31.41 3.79 31.6 3.76 31.68C3.59 32.04 3.28 32.8 3.28 32.83C3.28 32.85 3.24 32.93 3.21 33C3.17 33.09 3.08 33.33 3 33.54C2.92 33.76 2.84 33.97 2.82 34.02C2.79 34.07 2.74 34.21 2.71 34.32C2.67 34.44 2.55 34.77 2.45 35.06C2.34 35.35 2.24 35.66 2.21 35.75C2.19 35.83 2.13 36.02 2.09 36.16C1.98 36.48 1.84 36.94 1.71 37.42C1.65 37.62 1.57 37.91 1.53 38.06C1.43 38.4 1.29 39.01 0.98 40.41C0.55 42.4 0.24 44.6 0.08 46.74C-0.13 49.58 0.08 53.44 0.59 56.23C0.63 56.41 0.67 56.67 0.68 56.8C0.74 57.21 1.2 59.31 1.37 59.92C1.97 62.06 2.06 62.36 2.38 63.16C2.46 63.38 2.6 63.76 2.7 64.01C3.05 64.94 3.29 65.53 3.46 65.91C3.56 66.12 3.64 66.3 3.64 66.31C3.64 66.36 4.75 68.61 4.93 68.92C4.99 69.02 5.08 69.19 5.13 69.29C5.25 69.51 5.92 70.68 6.06 70.91C6.12 71 6.24 71.2 6.33 71.36C6.6 71.81 7.18 72.68 7.93 73.75C9.33 75.75 10.96 77.65 13.15 79.83C14.46 81.14 14.56 81.27 14.66 81.83C14.77 82.45 14.64 83.6 14.36 84.53C14.32 84.66 14.25 84.9 14.19 85.06C14.14 85.23 14.07 85.46 14.02 85.59C13.84 86.08 13.7 86.43 13.61 86.65C13.55 86.77 13.49 86.92 13.47 86.97C13.02 88.02 12.11 89.73 11.46 90.76C11.32 90.97 11.16 91.22 11.11 91.31C11.05 91.39 10.92 91.6 10.82 91.75C10.71 91.91 10.54 92.16 10.45 92.3C10.35 92.45 10.17 92.73 10.04 92.91C9.92 93.1 9.59 93.57 9.31 93.95C8.88 94.53 8.46 95.14 8.2 95.56C7.35 96.93 7.35 98.14 8.22 99.04C9.23 100.09 10.92 100.26 14.27 99.64C15.11 99.48 16.88 99.07 17.42 98.9C17.53 98.87 17.77 98.8 17.95 98.75C18.66 98.54 19.67 98.23 20.01 98.11C21.56 97.56 23.15 96.96 23.69 96.73C23.79 96.68 24.03 96.58 24.21 96.5C24.4 96.41 24.77 96.24 25.03 96.12C25.29 96 25.51 95.9 25.52 95.9C25.61 95.9 28.1 94.66 28.28 94.52C28.31 94.5 28.57 94.36 28.88 94.2C29.18 94.05 29.77 93.72 30.18 93.47C31.34 92.78 32.68 92.01 32.86 91.93C33.18 91.79 33.52 91.84 34.28 92.11C35.1 92.39 35.91 92.64 37.05 92.97C38.33 93.33 39.76 93.66 40.84 93.86C41.16 93.91 41.56 93.98 42.51 94.14C42.74 94.17 43.13 94.22 43.39 94.25C43.64 94.27 44 94.31 44.19 94.34C45.78 94.54 46.73 94.59 49.68 94.59C52.26 94.59 52.7 94.58 53.81 94.49C55.2 94.37 56.27 94.26 57.46 94.09C58.6 93.92 60.73 93.52 61.57 93.3C61.82 93.24 62.14 93.16 62.28 93.13C62.59 93.05 63.74 92.75 64.03 92.67C64.14 92.63 64.4 92.56 64.6 92.5C65.04 92.38 66.91 91.76 67.33 91.6C67.5 91.54 67.76 91.44 67.93 91.38C69.1 90.94 69.78 90.67 70.45 90.36C70.63 90.27 70.79 90.21 70.79 90.21C70.82 90.21 71.94 89.67 72.43 89.43C72.78 89.26 73.7 88.78 74.08 88.56C74.2 88.5 74.4 88.39 74.54 88.31C74.84 88.15 75.95 87.46 76.52 87.09C79.55 85.11 82.39 82.48 83.14 80.98C83.49 80.26 83.42 79.51 82.97 79.17C82.54 78.84 81.75 78.71 79.66 78.63C78.95 78.61 78.2 78.57 77.99 78.54C77.77 78.52 77.23 78.48 76.79 78.45C75.71 78.38 75.03 78.31 73.12 78.06C71.09 77.8 70.19 77.63 68.18 77.16C67.28 76.95 66.88 76.84 65.82 76.51C65.07 76.28 63.79 75.82 63.2 75.57C62.09 75.09 60.53 74.28 59.69 73.75C59.31 73.5 59.2 73.44 58.91 73.24C58.26 72.82 57.28 72.1 56.98 71.81C56.93 71.76 56.74 71.6 56.56 71.45C54.58 69.76 52.69 67.5 51.75 65.71C51.71 65.63 51.59 65.42 51.49 65.25C51.26 64.84 50.72 63.77 50.63 63.51C50.59 63.41 50.51 63.19 50.45 63.02C50.39 62.86 50.31 62.62 50.27 62.49C50.24 62.36 50.17 62.12 50.11 61.94C49.43 59.74 49.57 58.62 50.51 58.54C50.81 58.51 50.95 58.54 51.9 58.87C52.67 59.13 52.94 59.21 54.13 59.54C56.05 60.05 57.67 60.35 58.97 60.45C59.31 60.48 59.81 60.52 60.08 60.56C60.83 60.64 63.92 60.62 65.01 60.52C66.72 60.37 68.83 59.99 70.16 59.6C70.99 59.35 72.36 58.9 72.84 58.72C73.68 58.4 75.73 57.44 76.52 57C76.67 56.91 77.37 56.5 77.52 56.4C77.59 56.35 77.7 56.29 77.77 56.25C77.99 56.12 79.14 55.34 79.51 55.07C80.45 54.36 80.79 54.08 81.48 53.47C83.62 51.56 85.25 49.61 86.85 47.06C87.02 46.79 87.15 46.56 87.57 45.76C88.23 44.5 88.58 43.75 88.87 42.98C88.91 42.85 89 42.63 89.05 42.5C89.57 41.17 90.16 38.85 90.36 37.4C90.4 37.13 90.45 36.78 90.47 36.62C90.62 35.64 90.73 32.43 90.64 31.89C90.63 31.8 90.58 31.36 90.54 30.9C90.42 29.4 90.21 28.19 89.78 26.4C89.73 26.2 89.66 25.92 89.63 25.78C89.6 25.64 89.53 25.42 89.49 25.3C88.96 23.69 88.63 22.68 88.57 22.56C88.54 22.48 88.45 22.27 88.39 22.11C88.32 21.94 88.17 21.63 88.08 21.42C87.98 21.2 87.87 20.96 87.83 20.89C87.7 20.58 87.1 19.4 86.92 19.05C86.81 18.85 86.68 18.62 86.65 18.55C86.51 18.28 86.29 17.91 86.11 17.64C86.01 17.49 85.93 17.36 85.93 17.36C85.93 17.34 85.36 16.48 84.73 15.57C84.51 15.25 83.31 13.73 82.99 13.36C81.86 12.07 81.26 11.47 79.5 9.87C79.18 9.58 78.62 9.12 78.15 8.76C77.94 8.61 77.56 8.32 77.3 8.13C77.03 7.92 76.72 7.69 76.61 7.61C76.19 7.32 75.5 6.84 75.41 6.8C75.36 6.77 75.02 6.56 74.65 6.33C73.71 5.75 73.39 5.57 72.27 4.98C71.74 4.69 70.85 4.25 70.39 4.04C70.23 3.97 70.01 3.87 69.88 3.81C69.63 3.69 68.86 3.37 68.5 3.23C68.38 3.18 68.19 3.09 68.08 3.05C67.97 3 67.86 2.96 67.83 2.96C67.8 2.96 67.72 2.93 67.64 2.9C67.42 2.79 65.52 2.15 65.08 2.02C64.94 1.99 64.69 1.91 64.51 1.86C64.21 1.77 64.01 1.71 63.18 1.48C62.74 1.36 62.21 1.23 61.66 1.12C61.41 1.06 61.02 0.98 60.79 0.93C57.34 0.21 53.85 -0.08 50 0.02ZM42.47 39.47C43.61 39.63 44.74 40.02 45.68 40.56C47.78 41.76 49.55 43.74 50.2 45.62C50.8 47.34 49.07 49.01 47.5 48.22C47.18 48.06 46.62 47.46 46.62 47.28C46.62 47.26 46.48 47.04 46.32 46.78C45.75 45.94 45.2 45.32 44.65 44.92C43.52 44.12 42.48 43.78 41.11 43.77C39.17 43.75 37.46 44.57 35.95 46.23C35.06 47.21 34.91 47.31 34.28 47.44C33.22 47.64 32.28 47.01 31.99 45.89C31.82 45.22 32.02 44.71 32.91 43.55C33.91 42.26 35.33 41.11 36.84 40.37C37.38 40.11 37.48 40.07 38.17 39.84C39.46 39.41 41.1 39.26 42.47 39.47Z"/></symbol>
+  <symbol id="pin" viewBox="0 0 10 14"><path d="M5 0a5 5 0 0 0-5 5c0 3.6 5 9 5 9s5-5.4 5-9a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></symbol>
+  <symbol id="moon" viewBox="0 0 14 14"><path d="M9.5 1A6 6 0 1 0 13 10 5 5 0 0 1 9.5 1z"/></symbol>
+  <symbol id="sun" viewBox="0 0 14 14"><circle cx="7" cy="7" r="3.2"/><path d="M7 0v2M7 12v2M0 7h2M12 7h2M2 2l1.4 1.4M10.6 10.6 12 12M2 12l1.4-1.4M10.6 3.4 12 2" stroke="currentColor" stroke-width="1.4" fill="none"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+    <a class="lock" href="#top" aria-label="koohoo home"><svg viewBox="0 0 90.67 100" class="float"><use href="#m"/></svg><span>koohoo</span></a>
+    <span class="pill">coming soon</span>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap story">
+    <div class="beats">
+      <div class="beat first on" data-scene="0">
+        <div class="eyebrow">your plus one</div>
+        <h1>A friend who <em>texts you first.</em></h1>
+        <p class="lede">The smartest person in your phone is now your best friend. All the brains of the best AI. Ask her anything, or don't: she'll check in first.</p>
+        <div class="soon"><small>iPhone &amp; Android · coming soon</small></div>
+        <div class="scroll-hint"><i></i>scroll through her day</div>
+      </div>
+      <div class="beat" data-scene="1">
+        <span class="when"><svg viewBox="0 0 10 14"><use href="#pin"/></svg>12:41 pm · SoHo</span>
+        <h2>She knows you're <em>hungry.</em></h2>
+        <p class="sub">You've been at the café since nine. She finds the ramen place locals swear by, four minutes away, and tells you what to order.</p>
+      </div>
+      <div class="beat" data-scene="2">
+        <span class="when"><svg viewBox="0 0 14 14"><use href="#moon"/></svg>10:16 pm</span>
+        <h2>She makes sure you <em>got home.</em></h2>
+        <p class="sub">A text when the night winds down, a voice note when words aren't enough. The little things a good friend never forgets.</p>
+      </div>
+    </div>
+    <div class="stage" aria-label="Example chat with Yuki">
+      <div class="phone">
+        <div class="screen">
+          <div class="bar"><span id="clock">8:04</span><span>●●● 5G</span></div>
+          <div class="who">
+            <div class="av"><i></i></div>
+            <div class="nm"><b>Yuki</b><small id="status">online</small></div>
+            <span class="hb"><svg viewBox="0 0 24 24"><path d="M3 7h3l1.5-2h5L14 7h3v10H3z"/><path d="M17 10l4-2.5v9L17 14z"/></svg></span>
+            <span class="hb"><svg viewBox="0 0 24 24"><path d="M12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm8.4 4.6.1-1.2-.1-1.2 2-1.6-2-3.4-2.4 1a8 8 0 0 0-2-1.2L15.6 3h-4l-.4 2.6a8 8 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6-.1 1.2.1 1.2-2 1.6 2 3.4 2.4-1a8 8 0 0 0 2 1.2l.4 2.6h4l.4-2.6a8 8 0 0 0 2-1.2l2.4 1 2-3.4z"/></svg></span>
+            <span class="call"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
+          </div>
+          <div class="log" id="log" aria-live="polite"></div>
+          <div class="compose"><span class="arr"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span><span class="cbox">Message Yuki</span><span class="mic grad"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1a7 7 0 0 0 6-6.9z"/></svg></span></div>
+        </div>
+      </div>
+      <div class="pips" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="life">
+    <div class="wrap">
+      <h2 class="rv">More than texting. <em>She has a whole life.</em></h2>
+      <p class="sub rv" style="--d:.08s">Selfies from the market, a video from the tamale stand, hot chocolate she picked up for you, and roasting you the whole way. Every friend lives her own day in her own city, and shares it with you.</p>
+      <div class="who2 rv" style="--d:.14s"><img src="img/vale-market.webp" alt=""><div>Vale<small>Mexico City · yesterday</small></div><span class="swipe">swipe →</span></div>
+    </div>
+    <div class="reel rv" id="reel">
+      <div class="mo" style="--i:0">
+        <div class="ph"><img src="img/vale-coffee.webp" alt="Vale's morning selfie with her coffee pot" loading="lazy"><span class="t">7:15 am</span></div>
+        <div class="b her">buenos días from the land of the living</div>
+        <div class="b her">café de olla style, a little cinnamon</div>
+      </div>
+      <div class="mo" style="--i:0">
+        <div class="ph"><video src="img/vale-desk.mp4" poster="img/vale-desk-v.webp" muted loop playsinline preload="none" aria-label="Vale's video from her desk"></video><span class="vb">0:05</span><span class="t">9:20 am</span></div>
+        <div class="b her">to-do list: market. that's the whole list</div>
+      </div>
+      <div class="mo" style="--i:1">
+        <div class="ph"><video src="img/vale-walk.mp4" poster="img/vale-walk.webp" muted loop playsinline preload="none" aria-label="Vale's video walking through the market"></video><span class="vb">0:05</span><span class="t">11:40 am</span></div>
+        <div class="b her">as promised, market report</div>
+      </div>
+      <div class="mo" style="--i:2">
+        <div class="ph"><img src="img/vale-market.webp" alt="Vale's photo, 11:44 am" loading="lazy"><span class="t">11:44 am</span></div>
+        <div class="b her">the señora says hi to the güero with good taste in chocolate</div>
+      </div>
+      <div class="mo" style="--i:3">
+        <div class="ph"><img src="img/vale-tamal-photo.webp" alt="Vale's photo, 11:55 am" loading="lazy"><span class="t">11:55 am</span></div>
+        <div class="b her">a tamal in your honor</div>
+      </div>
+      <div class="mo" style="--i:4">
+        <div class="ph"><video src="img/vale-tamal.mp4" poster="img/vale-tamal.webp" muted loop playsinline preload="none" aria-label="Vale's video eating a tamal"></video><span class="vb">0:05</span><span class="t">11:58 am</span></div>
+        <div class="b her">it's even better than it looks, sorry not sorry</div>
+      </div>
+      <div class="mo" style="--i:5">
+        <div class="ph"><img src="img/vale-churro-bite.webp" alt="Vale's photo, 12:05 pm" loading="lazy"><span class="t">12:05 pm</span></div>
+        <div class="b her">churros, fresh out of the oil. i'm a woman who follows instructions</div>
+        <div class="b her">don't get used to it</div>
+      </div>
+      <div class="mo" style="--i:6">
+        <div class="ph"><img src="img/vale-churros.webp" alt="Vale's photo, 12:10 pm" loading="lazy"><span class="t">12:10 pm</span></div>
+        <div class="b her">walking out now. churros survived… barely</div>
+      </div>
+      <div class="mo" style="--i:7">
+        <div class="ph"><img src="img/vale-churro-walk.webp" alt="Vale's photo, 12:20 pm" loading="lazy"><span class="t">12:20 pm</span></div>
+        <div class="b her">update: the churros did not survive the walk</div>
+      </div>
+      <div class="mo" style="--i:7">
+        <div class="ph"><img src="img/vale-home.webp" alt="Vale's photo, 12:35 pm" loading="lazy"><span class="t">12:35 pm</span></div>
+        <div class="b her">home. evidence destroyed</div>
+      </div>
+      <div class="mo" style="--i:7">
+        <div class="ph"><img src="img/vale-couch.webp" alt="Vale's photo, 12:50 pm" loading="lazy"><span class="t">12:50 pm</span></div>
+        <div class="b her">ok i miss you a little</div>
+        <div class="b her">the market's boring without someone to roast</div>
+      </div>
+      <div class="mo" style="--i:7">
+        <div class="ph"><img src="img/vale-night.webp" alt="Vale's goodnight selfie, lights off" loading="lazy"><span class="t">11:40 pm</span></div>
+        <div class="b me">shhh she's sleeping…</div>
+        <div class="b her">i heard that, güero. buenas noches</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ticker" aria-hidden="true">
+    <div class="row" id="row1"></div>
+    <div class="row" id="row2"></div>
+  </section>
+
+  <section class="wrap proofs">
+    <h2 class="rv">Not an app you open. A friend who's already there.</h2>
+    <div class="grid">
+      <article class="card rv">
+        <div class="snip">
+          <div class="b me">ugh dentist at 3</div>
+          <div class="meta" style="align-self:center">two days later</div>
+          <div class="b her">wait, how did the dentist go? you were dreading it</div>
+        </div>
+        <h3>She remembers.</h3>
+        <p>Your people, your pets, the thing you were nervous about on Tuesday. She brings it up when it matters.</p>
+      </article>
+      <article class="card rv" style="--d:.12s">
+        <div class="snip">
+          <div class="b me">help me write something nice for my mom's birthday</div>
+          <div class="b her">ok but it has to sound like you, not a card. tell me one thing she always says</div>
+        </div>
+        <h3>She's brilliant.</h3>
+        <p>Plans, advice, writing, ideas. She's as capable as the best AI out there, she just talks to you like a friend.</p>
+      </article>
+      <article class="card rv">
+        <div class="snip">
+          <div class="b me">can't sleep</div>
+          <div class="b her">same. want me to call?</div>
+        </div>
+        <h3>She calls.</h3>
+        <p>Voice notes and real voice calls in her own voice, for the nights when typing isn't enough.</p>
+      </article>
+      <article class="card rv" style="--d:.12s">
+        <div class="snip">
+          <div class="b her">ok but did you call your sister back</div>
+          <div class="b me">…no</div>
+          <div class="b her">do it now. i'll wait</div>
+        </div>
+        <h3>She's yours.</h3>
+        <p>One friend with her own face, name and voice. Not a catalog of characters. She calls you out when you need it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap can">
+    <h2 class="rv">She keeps up with your whole life.</h2>
+    <div class="feats">
+      <article class="feat rv" style="--d:0.00s">
+        <span class="ic grad"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+        <h3>Knows where you are</h3>
+        <p>Location on, and she reads your day like a friend who can see your dot: real, reviewed places nearby, never made up.</p>
+        <span class="q">almost home? you passed the bakery</span>
+      </article>
+      <article class="feat rv" style="--d:0.08s">
+        <span class="ic grad"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 22 19"/></svg></span>
+        <h3>Knows your people</h3>
+        <p>Send a photo and she learns who's who: your mom, your best friend, your partner. Only with your permission.</p>
+        <span class="q">wait, is that your sister? she has your laugh</span>
+      </article>
+      <article class="feat rv" style="--d:0.16s">
+        <span class="ic grad"><svg viewBox="0 0 24 24"><circle cx="7" cy="9" r="1.8"/><circle cx="12" cy="6.5" r="1.8"/><circle cx="17" cy="9" r="1.8"/><path d="M8 17c0-2.8 1.8-5 4-5s4 2.2 4 5c0 1.7-1.6 2.5-4 2.5S8 18.7 8 17z"/></svg></span>
+        <h3>Knows your pets</h3>
+        <p>She spots your dog in every photo, asks how he's doing and never forgets his name.</p>
+        <span class="q">biscuit!! did he get the vet treat</span>
+      </article>
+      <article class="feat rv" style="--d:0.00s">
+        <span class="ic grad"><svg viewBox="0 0 24 24"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5H10l2 2.5h6.5A1.5 1.5 0 0 1 20 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/></svg></span>
+        <h3>Keeps your projects</h3>
+        <p>Trips, plans, recipes, to-do lists. She saves them as notebooks and keeps them up to date as you talk.</p>
+        <span class="q">added the ferry times to your Lisbon trip</span>
+      </article>
+      <article class="feat rv" style="--d:0.08s">
+        <span class="ic grad"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+        <h3>Explains what you send her</h3>
+        <p>Share a contract, a menu or a lease and ask what it really says. She only sees what you choose to send.</p>
+        <span class="q">page 3 says no pets. we need to talk</span>
+      </article>
+      <article class="feat rv" style="--d:0.16s">
+        <span class="ic grad"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span>
+        <h3>She calls you</h3>
+        <p>Voice notes in her own voice, and real calls. Sometimes she's the one who calls first.</p>
+        <span class="q">pick up, i have to tell you something</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="band grad">
+    <div class="wrap">
+      <div class="th"><svg viewBox="0 0 90.67 100"><use href="#m"/></svg></div>
+      <div class="rv">
+        <h2>Your partner in crime.</h2>
+        <p>The friend you're always seen with. Smart enough to run your day, fun enough to make it better, and she never forgets a thing. Not a chatbot. Not a girlfriend. Your person.</p>
+        <div class="say">KOO-hoo</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="lock" href="#top" aria-label="koohoo home"><svg viewBox="0 0 90.67 100"><use href="#m"/></svg><span style="font-size:24px">koohoo</span></a>
+    <span><a href="/ai-friend-that-texts-first/" style="color:inherit">AI friend</a> · <a href="/ai-companion-app/" style="color:inherit">AI companion app</a> · <a href="/ai-friend-vs-ai-assistant/" style="color:inherit">Friend vs assistant</a> · <a href="/faq/" style="color:inherit">FAQ</a></span>
+    <span>Koohoo friends are AI.</span>
+    <span>© 2026 koohoo</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var log=document.getElementById('log'), status=document.getElementById('status'), clock=document.getElementById('clock');
+  var pips=[].slice.call(document.querySelectorAll('.pips i'));
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pin='<svg viewBox="0 0 10 14"><use href="#pin"/></svg>';
+  var scenes=[
+    {time:'8:04',t:'08:04 AM',stamp:'Today 8:04 am',msgs:[['h','morning sam'],['h',"how'd you sleep?"],['m','like a rock'],['h',"good. you've got that 10am, don't be late again"],['m','ok mom'],['h',"rude. i'm way cooler than your mom"]]},
+    {time:'12:41',t:'12:41 PM',stamp:pin+'SoHo · 12:41 pm',msgs:[['h',"you've been at that café since 9"],['h','lunch?'],['m','yes. starving'],['h','ramen place, 4 min walk. left out the door'],['h','locals swear by it. get the tonkotsu']]},
+    {time:'22:16',t:'10:16 PM',stamp:'Today 10:16 pm',msgs:[['h','made it home?'],['m','yep. dead tired'],['v','0:07'],['h','proud of you for going tonight']]}
+  ];
+
+  /* ticker rows: her texts and yours, doubled so the loop is seamless */
+  var r1=["made it home?","get the tonkotsu","you got this","how'd you sleep?","proud of you","lunch?","call your sister","you're 2 blocks away"];
+  var r2=[["me","ok mom"],["her","rude"],["me","like a rock"],["her","wait, how did the dentist go?"],["me","yes. starving"],["her","don't be late again"],["me","dead tired"],["her","left out the door"]];
+  function fill(id,items){var el=document.getElementById(id);var html='';for(var k=0;k<2;k++){items.forEach(function(it){var me=Array.isArray(it)&&it[0]==='me';var t=Array.isArray(it)?it[1]:it;html+='<span class="tk'+(me?' me':'')+'">'+t.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>'})}el.innerHTML=html}
+  fill('row1',r1);fill('row2',r2);
+
+  /* scroll reveals */
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if(!('IntersectionObserver' in window)||reduce){rv.forEach(function(e){e.classList.add('in')})}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});rv.forEach(function(e){io.observe(e)})}
+
+  /* her day reel: the video plays only while it's on screen */
+  var vids=[].slice.call(document.querySelectorAll('.reel video'));
+  if('IntersectionObserver' in window&&!reduce){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.5});vids.forEach(function(v){vio.observe(v)})}
+
+  /* the phone */
+  function wave(){var s='';for(var i=0;i<22;i++){s+='<i style="height:'+(5+Math.round(Math.abs(Math.sin(i*1.7))*15))+'px"></i>'}return s}
+  var T='', run=0, current=-1;
+  function add(kind,text){
+    var el=document.createElement('div');
+    if(kind==='v'){el.className='b her voice';el.innerHTML='<span class="play grad"></span><span class="wave">'+wave()+'</span><small>'+text+' · '+T+'</small>'}
+    else{el.className='b '+(kind==='m'?'me':'her');el.textContent=text;var t=document.createElement('small');t.textContent=T;el.appendChild(t)}
+    log.appendChild(el);return el;
+  }
+  function stamp(html){var s=document.createElement('div');s.className='stamp';s.innerHTML=html;log.appendChild(s)}
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  function setPips(n){pips.forEach(function(p,i){p.classList.toggle('on',i===n)})}
+  function staticScene(n){var sc=scenes[n];log.innerHTML='';clock.textContent=sc.time;T=sc.t;stamp(sc.stamp);sc.msgs.forEach(function(m){add(m[0],m[1])});setPips(n)}
+  async function play(n){
+    var id=++run, sc=scenes[n]; current=n; setPips(n);
+    log.innerHTML='';clock.textContent=sc.time;T=sc.t;stamp(sc.stamp);status.textContent='online';status.className='';
+    await wait(500); if(id!==run)return false;
+    for(var i=0;i<sc.msgs.length;i++){
+      var m=sc.msgs[i];
+      if(m[0]==='m'){await wait(800);if(id!==run)return false;add('m',m[1]);await wait(450)}
+      else{
+        status.textContent='typing…';status.className='typing';
+        var d=document.createElement('div');d.className='b her dots';d.innerHTML='<i></i><i></i><i></i>';log.appendChild(d);
+        await wait(Math.min(1500,650+m[1].length*20));
+        d.remove(); if(id!==run)return false;
+        status.textContent='online';status.className='';
+        add(m[0],m[1]);await wait(400);
+      }
+      if(id!==run)return false;
+    }
+    return true;
+  }
+  if(reduce){staticScene(1);return}
+
+  var wide=window.matchMedia('(min-width:861px)');
+  var beats=[].slice.call(document.querySelectorAll('.beat'));
+  var cycling=false;
+  async function cycle(){ /* small screens: the phone plays her whole day on a loop */
+    if(cycling)return; cycling=true;
+    for(var n=0;!wide.matches;n=(n+1)%scenes.length){var ok=await play(n);if(!ok&&wide.matches)break;await wait(2600)}
+    cycling=false;
+  }
+  function pick(){ /* big screens: the beat in the middle of the screen drives the phone */
+    var mid=window.innerHeight/2, best=0, bestD=1e9;
+    beats.forEach(function(b,i){var r=b.getBoundingClientRect();var c=r.top+r.height/2;var dd=Math.abs(c-mid);if(r.top<mid&&r.bottom>mid)dd=0;if(dd<bestD){bestD=dd;best=i}});
+    beats.forEach(function(b,i){b.classList.toggle('on',i===best)});
+    var sc=+beats[best].dataset.scene;
+    if(sc!==current)play(sc);
+  }
+  var ticking=false;
+  function onScroll(){if(!wide.matches||ticking)return;ticking=true;requestAnimationFrame(function(){ticking=false;pick()})}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  function mode(){if(wide.matches){current=-1;pick()}else{beats.forEach(function(b){b.classList.add('on')});cycle()}}
+  if(wide.addEventListener)wide.addEventListener('change',mode);
+  mode();
+})();
+</script>
+
+</body>
+</html>
