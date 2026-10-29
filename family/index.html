@@ -40,7 +40,7 @@ button:disabled{opacity:.6}
 <main>
  <img class="mk" src="../icon-192.png" alt="">
  <h1>Hi! <em>What's your name?</em></h1>
- <p class="s">Type your first name and we'll take you to your Koohoo.</p>
+ <p class="s">Type your first name and we'll take you to your new friend.</p>
  <div class="note" id="inapp"></div>
  <form id="f" autocomplete="off">
   <input id="n" name="n" placeholder="Your first name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="go" required>
@@ -56,7 +56,7 @@ button:disabled{opacity:.6}
  if(/\bLine\//i.test(ua)&&!/openExternalBrowser=1/.test(location.search)){location.replace(location.pathname+'?openExternalBrowser=1');return}
  const inapp=/FBAN|FBAV|Instagram|TikTok|musical_ly|BytedanceWebview|Snapchat/i.test(ua),note=document.getElementById('inapp');
  if(inapp){note.innerHTML='First, open this page in '+(ios?'<b>Safari</b>':'<b>Chrome</b>')+': tap <b>⋯</b> at the top right, then <b>Open in external browser</b>.';note.style.display='block'}
- else if(ios&&/CriOS|FxiOS|EdgiOS/.test(ua)){note.innerHTML='On iPhone, please open this page in <b>Safari</b> so you can add Koohoo to your Home Screen.';note.style.display='block'}
+ else if(ios&&/CriOS|FxiOS|EdgiOS/.test(ua)){note.innerHTML='On iPhone, please open this page in <b>Safari</b> so you can add the app to your Home Screen.';note.style.display='block'}
  const f=document.getElementById('f'),n=document.getElementById('n'),m=document.getElementById('m'),go=document.getElementById('go');
  const norm=s=>s.trim().toLowerCase().split(/\s+/).join(' ');
  const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
