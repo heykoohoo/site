@@ -157,6 +157,9 @@ p{margin:0}
 .card:hover{transform:translateY(-4px) rotate(-.3deg)}
 .snip{display:flex;flex-direction:column;gap:6px;background:var(--bg);border-radius:20px;padding:16px;min-height:112px;justify-content:center}
 .snip .b{animation:none;font-size:15px}
+/* photo bubbles (Nick, Nov 14: "the example texts should show a picture") */
+.b.pic{padding:3px;max-width:58%;line-height:0}
+.b.pic img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:13px}
 .snip .meta{font-size:11px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
 .snip .meta svg{width:10px;fill:var(--rose)}
 .card h3{font-size:25px;line-height:1.15}
@@ -367,6 +370,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
       </article>
       <article class="card rv" style="--d:.12s">
         <div class="snip">
+          <div class="b me pic"><img src="img/demo-sign.webp" alt="A no-parking sign in Japanese" loading="lazy"></div>
           <div class="b me">what does this sign say</div>
           <div class="b her">no parking 8 to 6. you've got 12 min, move it</div>
         </div>
@@ -466,8 +470,8 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var pin='<svg viewBox="0 0 10 14"><use href="#pin"/></svg>';
   var scenes=[
-    {time:'4:12',t:'04:12 PM',stamp:pin+'Sapporo · 4:12 pm',msgs:[['h','wait. you\'re right by it'],['h','the lacquer chopsticks you wanted. department store across the street, 7th floor'],['h',"look for 漆器 on the sign. that's lacquerware"],['m','how did you know'],['h','you told me tuesday. go, they close at 8']]},
-    {time:'12:41',t:'12:41 PM',stamp:pin+'SoHo · 12:41 pm',msgs:[['h',"you've been at that café since 9"],['h','lunch?'],['m','yes. starving'],['h','ramen place, 4 min walk. left out the door'],['h','locals swear by it. get the tonkotsu']]},
+    {time:'4:12',t:'04:12 PM',stamp:pin+'Sapporo · 4:12 pm',msgs:[['h','wait. you\'re right by it'],['h','the lacquer chopsticks you wanted. department store across the street, 7th floor'],['h',"look for 漆器 on the sign. that's lacquerware"],['m','how did you know'],['h','you told me tuesday. go, they close at 8'],['pm','img/demo-chopsticks.webp'],['m','got them!!'],['h','ok those are gorgeous. told you']]},
+    {time:'12:41',t:'12:41 PM',stamp:pin+'SoHo · 12:41 pm',msgs:[['h',"you've been at that café since 9"],['h','lunch?'],['m','yes. starving'],['h','ramen place, 4 min walk. left out the door'],['h','locals swear by it. get the tonkotsu'],['pm','img/demo-ramen.webp'],['m','ok you were right'],['h','i usually am']]},
     {time:'22:16',t:'10:16 PM',stamp:'Today 10:16 pm',msgs:[['h','made it home?'],['m','yep. dead tired'],['v','0:07'],['h','proud of you for going tonight']]}
   ];
 
@@ -492,6 +496,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   function add(kind,text){
     var el=document.createElement('div');
     if(kind==='v'){el.className='b her voice';el.innerHTML='<span class="play grad"></span><span class="wave">'+wave()+'</span><small>'+text+' · '+T+'</small>'}
+    else if(kind==='pm'){el.className='b me pic';el.innerHTML='<img src="'+text+'" alt="">'}
     else{el.className='b '+(kind==='m'?'me':'her');el.textContent=text;var t=document.createElement('small');t.textContent=T;el.appendChild(t)}
     log.appendChild(el);return el;
   }
@@ -505,7 +510,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
     await wait(500); if(id!==run)return false;
     for(var i=0;i<sc.msgs.length;i++){
       var m=sc.msgs[i];
-      if(m[0]==='m'){await wait(800);if(id!==run)return false;add('m',m[1]);await wait(450)}
+      if(m[0]==='m'||m[0]==='pm'){await wait(800);if(id!==run)return false;add(m[0],m[1]);await wait(450)}
       else{
         status.textContent='typing…';status.className='typing';
         var d=document.createElement('div');d.className='b her dots';d.innerHTML='<i></i><i></i><i></i>';log.appendChild(d);
