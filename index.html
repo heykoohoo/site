@@ -47,6 +47,23 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17p
 .power{padding-block:96px 72px;text-align:center}
 .power h2{font-size:clamp(40px,6.4vw,76px);max-width:16ch;margin:0 auto}
 .power h2 em{display:block;font-size:.55em;margin-top:10px;font-style:normal;background:linear-gradient(135deg,var(--rose),var(--berry));-webkit-background-clip:text;background-clip:text;color:transparent}
+.power .pq{margin-top:22px;font-size:19px;color:var(--muted)}
+.power .vs{display:grid;grid-template-columns:1.05fr 1fr 1.15fr 1fr;gap:14px;margin-top:34px;text-align:left;align-items:stretch}
+.power .ask{margin:0;border-radius:22px;overflow:hidden;background:var(--surface);border:1.5px solid var(--line);display:flex;flex-direction:column}
+.power .ask img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.power .ask figcaption{padding:12px 14px;font-family:var(--display);font-weight:600;color:var(--head)}
+.power .way{border-radius:22px;padding:18px;background:var(--surface);border:1.5px solid var(--line);display:flex;flex-direction:column;gap:9px;min-width:0}
+.power .way>b{font-family:var(--display);font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.power .search .res{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#3b5bdb;line-height:1.3}
+.power .search .res i{flex:none;width:14px;height:14px;border-radius:4px;background:var(--line);margin-top:2px}
+.power .search small{color:var(--muted);font-size:12px;margin-top:auto}
+.power .bot p,.power .bot li{font-size:13.5px;color:var(--ink);line-height:1.45;margin:0}
+.power .bot ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+.power .bot{position:relative;max-height:340px;overflow:hidden}
+.power .bot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(transparent,var(--surface))}
+.power .her{background:linear-gradient(160deg,#fff,var(--surface));border-color:var(--rose);justify-content:flex-start}
+.power .her .tk{white-space:normal;font-size:17px;align-self:flex-start}
+@media (max-width:860px){.power .vs{grid-template-columns:1fr 1fr}}
 .power .pw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px;text-align:left}
 .power .pw div{background:var(--surface);border:1.5px solid var(--line);border-radius:24px;padding:20px 22px}
 .power .pw b{display:block;font-family:var(--display);font-weight:600;font-size:19px;color:var(--head)}
@@ -324,11 +341,25 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   <section class="wrap power">
     <div class="eyebrow">your plus one</div>
     <h2>The power of the entire internet. <em>Right when you need it.</em></h2>
-    <div class="pw">
-      <div><b>A sign you can't read</b><span>She reads it for you.</span></div>
-      <div><b>Starving in a new city</b><span>The spot locals swear by, four minutes away.</span></div>
-      <div><b>A contract in legalese</b><span>What it actually says, in plain words.</span></div>
+    <p class="pq">Same question. Three ways to get an answer.</p>
+    <div class="vs">
+      <figure class="ask"><img src="img/demo-sign.webp" alt="A Japanese no-parking sign"><figcaption>"what does this sign say?"</figcaption></figure>
+      <div class="way search"><b>Search</b>
+        <div class="res"><i></i><span>Japanese road signs explained: the complete guide</span></div>
+        <div class="res"><i></i><span>駐車禁止 meaning and pronunciation</span></div>
+        <div class="res"><i></i><span>Parking in Japan: 14 rules every visitor should know</span></div>
+        <div class="res"><i></i><span>Forum: what does this sign mean? (3 answers)</span></div>
+        <small>About 1,240,000 results</small></div>
+      <div class="way bot"><b>A chatbot</b>
+        <p>Great question! This sign reads 駐車禁止 (chūsha kinshi), which means "No Parking." Here's what you need to know:</p>
+        <ul><li><strong>Restriction:</strong> parking is not allowed in this area.</li><li><strong>Hours:</strong> the numbers 8–18 indicate the restriction applies from 8:00 to 18:00.</li><li><strong>Penalties:</strong> fines in Japan typically range from…</li></ul></div>
+      <div class="way her"><b>Your plus one</b>
+        <div class="tk">no parking 8 to 6. you've got 12 min, move it</div></div>
     </div>
+  </section>
+  <section class="ticker" aria-hidden="true">
+    <div class="row" id="row1"></div>
+    <div class="row" id="row2"></div>
   </section>
   <section class="life">
     <div class="wrap">
@@ -387,10 +418,6 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
     </div>
   </section>
 
-  <section class="ticker" aria-hidden="true">
-    <div class="row" id="row1"></div>
-    <div class="row" id="row2"></div>
-  </section>
 
   <section class="wrap proofs">
     <h2 class="rv">Not an app you open. A friend who's already there.</h2>
@@ -510,8 +537,8 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   ];
 
   /* ticker rows: her texts and yours, doubled so the loop is seamless */
-  var r1=["made it home?","get the tonkotsu","you got this","how'd you sleep?","proud of you","lunch?","call your sister","you're 2 blocks away"];
-  var r2=[["me","ok mom"],["her","rude"],["me","like a rock"],["her","wait, how did the dentist go?"],["me","yes. starving"],["her","don't be late again"],["me","dead tired"],["her","left out the door"]];
+  var r1=[["me","translate this menu"],["her","the 3rd one. trust me"],["me","which train to shibuya"],["her","green line, platform 3, 6 min"],["me","what's my landlord actually saying"],["her","rent's going up 4%. push back"],["me","do i tip in tokyo"],["her","nope. it's kind of rude there"]];
+  var r2=[["me","fix my cover letter"],["her","done. you sound hired"],["me","is this a good deal on the car"],["her","2k over. walk away slowly"],["me","what wine goes with this"],["her","a cold riesling. done"],["me","help me reply to my boss"],["her","polite, short, a little savage. sending"]];
   function fill(id,items){var el=document.getElementById(id);var html='';for(var k=0;k<2;k++){items.forEach(function(it){var me=Array.isArray(it)&&it[0]==='me';var t=Array.isArray(it)?it[1]:it;html+='<span class="tk'+(me?' me':'')+'">'+t.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>'})}el.innerHTML=html}
   fill('row1',r1);fill('row2',r2);
 
