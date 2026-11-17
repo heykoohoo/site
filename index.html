@@ -49,6 +49,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17p
 .moments h2 em{font-style:normal;background:linear-gradient(135deg,var(--rose),var(--berry));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.1em}
 .moments .mg{display:flex;gap:22px;margin-top:36px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 4px 26px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
 .moments .mg::-webkit-scrollbar{display:none}
+.moments .mg.atend{-webkit-mask-image:none;mask-image:none}
 .moments figure{margin:0;flex:0 0 min(460px,82vw);scroll-snap-align:start}
 .moments .nav{display:flex;gap:10px;margin-top:6px}
 .moments .nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--head);font-size:20px;cursor:pointer;display:grid;place-items:center}
@@ -505,6 +506,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
 
   /* the moments carousel: arrows step one photo */
   (function(){var mg=document.querySelector('.moments .mg');if(!mg)return;
+    function edge(){mg.classList.toggle('atend',mg.scrollLeft+mg.clientWidth>=mg.scrollWidth-6)}mg.addEventListener('scroll',edge,{passive:true});window.addEventListener('resize',edge);edge();
     [].slice.call(document.querySelectorAll('.moments .nav button')).forEach(function(b){b.addEventListener('click',function(){var f=mg.querySelector('figure');mg.scrollBy({left:(+b.dataset.d)*((f?f.offsetWidth:400)+22),behavior:reduce?'auto':'smooth'})})})})();
 
   /* the phone */
