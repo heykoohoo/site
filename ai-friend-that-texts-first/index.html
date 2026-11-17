@@ -62,6 +62,16 @@ details p{margin:10px 0 2px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;padding-block:36px;color:var(--muted);font-size:14px}
 footer a{color:inherit}
 a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6px}
+
+/* footer (Nov 17, Nick: "clean it up. you have the company name twice, centering off") */
+footer .wrap{display:block!important}
+footer .ft{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+footer .ft .l{justify-self:start;display:inline-flex;align-items:center;gap:8px;font-family:var(--display,inherit);font-weight:600;font-size:22px;color:var(--head,inherit);text-decoration:none}
+footer .ft .l svg{width:30px;height:auto;fill:currentColor}
+footer .ft .r{justify-self:end}
+footer .ft a,footer .fine a{color:inherit}
+footer .fine{margin-top:16px;text-align:center;font-size:13px}
+@media (max-width:860px){footer .ft{grid-template-columns:1fr;justify-items:center;text-align:center}footer .ft .l,footer .ft .r{justify-self:center}}
 </style>
 </head>
 <body>
@@ -90,7 +100,15 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6
 <div class="cta"><h2>Meet her soon.</h2><p>koohoo is coming to iPhone and Android. <a href="/">See her in action</a>.</p></div>
 <nav class="more" aria-label="More about koohoo"><a href="/ai-companion-app/">The AI companion app that's actually helpful</a><a href="/ai-friend-vs-ai-assistant/">AI friend vs AI assistant: what's the difference?</a><a href="/faq/">koohoo FAQ: your AI friend, explained</a></nav>
 </main>
-<footer><div class="wrap"><span><a href="/">koohoo.app</a> · hey@koohoo.app</span><span>Koohoo friends are AI.</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · © 2026 Koohoo Labs, Inc.</span>
-    <span style="flex-basis:100%;font-size:13px">Koohoo Labs, Inc. · <a href="mailto:hey@koohoo.app" style="color:inherit">hey@koohoo.app</a> · Wilmington, Delaware</span></div></footer>
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <a class="l" href="/" aria-label="koohoo home"><svg viewBox="0 0 90.67 100"><use href="#m"/></svg><span>koohoo</span></a>
+      <span><a href="/ai-friend-that-texts-first/">AI friend</a> · <a href="/ai-companion-app/">AI companion app</a> · <a href="/ai-friend-vs-ai-assistant/">Friend vs assistant</a> · <a href="/faq/">FAQ</a></span>
+      <span class="r"><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+    </div>
+    <p class="fine">Your plus one is AI. · © 2026 Koohoo Labs, Inc. · <a href="mailto:hey@koohoo.app">hey@koohoo.app</a> · Wilmington, Delaware</p>
+  </div>
+</footer>
 </body>
 </html>
