@@ -128,7 +128,7 @@ p{margin:0}
 .mic{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center}
 .mic svg{width:17px;height:17px;fill:#fff}
 .pips{display:flex;gap:8px}
-.pips i{width:8px;height:8px;border-radius:99px;background:var(--line);transition:width .35s ease,background .35s ease}
+.pips i{cursor:pointer;padding:0;outline-offset:6px;width:8px;height:8px;border-radius:99px;background:var(--line);transition:width .35s ease,background .35s ease}
 .pips i.on{width:26px;background:var(--rose)}
 
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -297,7 +297,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
           <div class="compose"><span class="arr"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span><span class="cbox" id="cbox">Message Yuki</span><span class="mic grad"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1a7 7 0 0 0 6-6.9z"/></svg></span></div>
         </div>
       </div>
-      <div class="pips" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+      <div class="pips" role="tablist" aria-label="Example chats"><i class="on" role="tab" tabindex="0" aria-label="Yuki"></i><i role="tab" tabindex="0" aria-label="Vale"></i><i role="tab" tabindex="0" aria-label="Maya"></i></div>
     </div>
   </section>
 
@@ -571,22 +571,42 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   var wide=window.matchMedia('(min-width:861px)');
   var beats=[].slice.call(document.querySelectorAll('.beat'));
   var cycling=false;
-  async function cycle(){ /* small screens: the phone plays her whole day on a loop */
+  var nextUp=-1;
+  async function cycle(){ /* small screens: the phone plays every chat on a loop; a dot jumps straight to its chat */
     if(cycling)return; cycling=true;
-    for(var n=0;!wide.matches;n=(n+1)%scenes.length){var ok=await play(n);if(!ok&&wide.matches)break;await wait(2600)}
+    var n=0;
+    while(!wide.matches){
+      if(nextUp>=0){n=nextUp;nextUp=-1}
+      var ok=await play(n);
+      if(!ok){if(wide.matches)break;continue}
+      await wait(2600);
+      n=nextUp>=0?n:(n+1)%scenes.length;
+    }
     cycling=false;
+  }
+  async function loopWide(n){ /* big screens (Nick, Nov 17: "the animations should keep playing, not just once"): the chat in view replays */
+    current=n;
+    while(wide.matches&&current===n){var id=run;var ok=await play(n);if(!ok||current!==n)return;await wait(3000);if(run!==id+1||current!==n)return}
   }
   function pick(){ /* big screens: the beat in the middle of the screen drives the phone */
     var mid=window.innerHeight/2, best=0, bestD=1e9;
     beats.forEach(function(b,i){var r=b.getBoundingClientRect();var c=r.top+r.height/2;var dd=Math.abs(c-mid);if(r.top<mid&&r.bottom>mid)dd=0;if(dd<bestD){bestD=dd;best=i}});
     beats.forEach(function(b,i){b.classList.toggle('on',i===best)});
     var sc=+beats[best].dataset.scene;
-    if(sc!==current)play(sc);
+    if(sc!==current)loopWide(sc);
   }
   var ticking=false;
   function onScroll(){if(!wide.matches||ticking)return;ticking=true;requestAnimationFrame(function(){ticking=false;pick()})}
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll);
+  pips.forEach(function(p,i){ /* Nick, Nov 17: "i cant click to move to slides 2 and 3" */
+    function go(){
+      if(wide.matches){beats[i].scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})}
+      else{nextUp=i;run++;}
+    }
+    p.addEventListener('click',go);
+    p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+  });
   function mode(){if(wide.matches){current=-1;pick()}else{beats.forEach(function(b){b.classList.add('on')});cycle()}}
   if(wide.addEventListener)wide.addEventListener('change',mode);
   mode();
