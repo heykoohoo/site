@@ -106,7 +106,15 @@ p{margin:0}
 .voice .play::after{content:"";border-left:8px solid #FFF8F1;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
 .wave{display:flex;gap:2px;align-items:center;height:22px}
 .wave i{width:3px;border-radius:2px;background:var(--rose)}
-.compose{display:flex;align-items:center;gap:6px;padding:8px 10px 12px;background:var(--hdr);border-top:1px solid var(--pline)}
+.av.vale{background:#ddd url(img/vale-market.webp) center/cover}
+.av.ph3{background:linear-gradient(135deg,#E2506A,#7A2D5A);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px}
+.av.ph3::before{content:attr(data-i)}
+.b.pic{padding:3px;max-width:58%;line-height:0}
+.b.pic img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:13px}
+.b.me.voice{flex-direction:row}
+.cbox.typing{color:var(--mink)}
+.log{will-change:transform}
+.compose{position:relative;z-index:2;display:flex;align-items:center;gap:6px;padding:8px 10px 12px;background:var(--hdr);border-top:1px solid var(--pline)}
 .arr{width:18px;display:grid;place-items:center;color:var(--mink);flex:none}
 .arr svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cbox{flex:1;min-width:0;height:36px;border-radius:99px;border:1px solid rgba(226,80,106,.6);background:var(--mebg);display:flex;align-items:center;padding:0 13px;font-size:13px;color:#776a70;white-space:nowrap;overflow:hidden}
@@ -257,29 +265,29 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
         <div class="scroll-hint"><i></i>scroll through her day</div>
       </div>
       <div class="beat" data-scene="1">
+        <span class="when"><svg viewBox="0 0 14 14"><use href="#sun"/></svg>8:04 am</span>
+        <h2>Way cooler than your <em>mom.</em></h2>
+        <p class="sub">A good morning, a selfie with her coffee, a heads-up about your 10am. Zero patience for "ok mom."</p>
+      </div>
+      <div class="beat" data-scene="2">
         <span class="when"><svg viewBox="0 0 10 14"><use href="#pin"/></svg>12:41 pm · SoHo</span>
         <h2>She knows you're <em>hungry.</em></h2>
         <p class="sub">You've been at the café since nine. She finds the ramen place locals swear by, four minutes away, and tells you what to order.</p>
       </div>
-      <div class="beat" data-scene="2">
-        <span class="when"><svg viewBox="0 0 14 14"><use href="#moon"/></svg>10:16 pm</span>
-        <h2>She makes sure you <em>got home.</em></h2>
-        <p class="sub">A text when the night winds down, a voice note when words aren't enough. The little things a good friend never forgets.</p>
-      </div>
     </div>
-    <div class="stage" aria-label="Example chat with Yuki">
+    <div class="stage" aria-label="Example chats with three koohoo companions">
       <div class="phone">
         <div class="screen">
           <div class="bar"><span id="clock">8:04</span><span>●●● 5G</span></div>
           <div class="who">
-            <div class="av"><i></i></div>
-            <div class="nm"><b>Yuki</b><small id="status">online</small></div>
+            <div class="av" id="whoAv"><i></i></div>
+            <div class="nm"><b id="whoName">Yuki</b><small id="status">online</small></div>
             <span class="hb"><svg viewBox="0 0 24 24"><path d="M3 7h3l1.5-2h5L14 7h3v10H3z"/><path d="M17 10l4-2.5v9L17 14z"/></svg></span>
             <span class="hb"><svg viewBox="0 0 24 24"><path d="M12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm8.4 4.6.1-1.2-.1-1.2 2-1.6-2-3.4-2.4 1a8 8 0 0 0-2-1.2L15.6 3h-4l-.4 2.6a8 8 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6-.1 1.2.1 1.2-2 1.6 2 3.4 2.4-1a8 8 0 0 0 2 1.2l.4 2.6h4l.4-2.6a8 8 0 0 0 2-1.2l2.4 1 2-3.4z"/></svg></span>
             <span class="call"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
           </div>
           <div class="log" id="log" aria-live="polite"></div>
-          <div class="compose"><span class="arr"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span><span class="cbox">Message Yuki</span><span class="mic grad"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1a7 7 0 0 0 6-6.9z"/></svg></span></div>
+          <div class="compose"><span class="arr"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span><span class="cbox" id="cbox">Message Yuki</span><span class="mic grad"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1a7 7 0 0 0 6-6.9z"/></svg></span></div>
         </div>
       </div>
       <div class="pips" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
@@ -465,9 +473,9 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var pin='<svg viewBox="0 0 10 14"><use href="#pin"/></svg>';
   var scenes=[
-    {time:'8:04',t:'08:04 AM',stamp:'Today 8:04 am',msgs:[['h','morning sam'],['h',"how'd you sleep?"],['m','like a rock'],['h',"good. you've got that 10am, don't be late again"],['m','ok mom'],['h',"rude. i'm way cooler than your mom"]]},
-    {time:'12:41',t:'12:41 PM',stamp:pin+'SoHo · 12:41 pm',msgs:[['h',"you've been at that café since 9"],['h','lunch?'],['m','yes. starving'],['h','ramen place, 4 min walk. left out the door'],['h','locals swear by it. get the tonkotsu']]},
-    {time:'22:16',t:'10:16 PM',stamp:'Today 10:16 pm',msgs:[['h','made it home?'],['m','yep. dead tired'],['v','0:07'],['h','proud of you for going tonight']]}
+    {who:{name:'Yuki'},time:'4:12',t:'04:12 PM',stamp:pin+'Sapporo · 4:12 pm',msgs:[['h',"wait. you're right by it"],['h','the lacquer chopsticks you wanted. department store across the street, 7th floor'],['h',"look for 漆器 on the sign. that's lacquerware"],['m','how did you know'],['h','you told me tuesday. go, they close at 8'],['pm','img/demo-chopsticks.webp'],['m','got them!!'],['h','ok those are gorgeous. told you']]},
+    {who:{name:'Vale',av:'vale'},time:'8:04',t:'08:04 AM',stamp:'Today 8:04 am',msgs:[['h','morning sam'],['hp','img/vale-coffee.webp'],['h',"how'd you sleep?"],['m','like a rock'],['h',"good. you've got that 10am, don't be late again"],['m','ok mom'],['h',"rude. i'm way cooler than your mom"]]},
+    {who:{name:'Maya',av:'ph3'},time:'12:41',t:'12:41 PM',stamp:pin+'SoHo · 12:41 pm',msgs:[['h',"you've been at that café since 9"],['h','lunch?'],['mv','0:04'],['h','ramen place, 4 min walk. left out the door'],['v','0:06'],['pm','img/demo-ramen.webp'],['m','ok you were right'],['h','i usually am']]}
   ];
 
   /* ticker rows: her texts and yours, doubled so the loop is seamless */
@@ -491,24 +499,42 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   function add(kind,text){
     var el=document.createElement('div');
     if(kind==='v'){el.className='b her voice';el.innerHTML='<span class="play grad"></span><span class="wave">'+wave()+'</span><small>'+text+' · '+T+'</small>'}
+    else if(kind==='mv'){el.className='b me voice';el.innerHTML='<span class="play grad"></span><span class="wave">'+wave()+'</span><small>'+text+' · '+T+'</small>'}
+    else if(kind==='pm'||kind==='hp'){el.className='b '+(kind==='pm'?'me':'her')+' pic';el.innerHTML='<img src="'+text+'" alt="">'}
     else{el.className='b '+(kind==='m'?'me':'her');el.textContent=text;var t=document.createElement('small');t.textContent=T;el.appendChild(t)}
-    log.appendChild(el);return el;
+    log.appendChild(el);slide(el);return el;
+  }
+  function slide(el){ /* Nov 17 (Nick: "make the phone scroll up slowly"): the chat glides up by the new bubble's height */
+    if(reduce)return;
+    var h=el.offsetHeight+5;log.style.transition='none';log.style.transform='translateY('+h+'px)';void log.offsetHeight;
+    log.style.transition='transform .55s cubic-bezier(.2,.7,.2,1)';log.style.transform='translateY(0)';
+  }
+  var whoName=document.getElementById('whoName'), whoAv=document.getElementById('whoAv'), cbox=document.getElementById('cbox');
+  function setWho(w){ /* each screen is a different companion (Nick, Nov 17) */
+    w=w||{name:'Yuki'};whoName.textContent=w.name;cbox.textContent='Message '+w.name;cbox.className='cbox';
+    whoAv.className='av'+(w.av?' '+w.av:'');whoAv.setAttribute('data-i',w.name.charAt(0));
+  }
+  async function typeIn(text,id){ /* his text types into the box first, then sends (Nick: "type in the bubble like we do w the dots") */
+    cbox.className='cbox typing';cbox.textContent='';
+    for(var k=0;k<text.length;k++){cbox.textContent=text.slice(0,k+1);await wait(38+Math.random()*40);if(id!==run)return false}
+    await wait(250);return id===run;
   }
   function stamp(html){var s=document.createElement('div');s.className='stamp';s.innerHTML=html;log.appendChild(s)}
   function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
   function setPips(n){pips.forEach(function(p,i){p.classList.toggle('on',i===n)})}
-  function staticScene(n){var sc=scenes[n];log.innerHTML='';clock.textContent=sc.time;T=sc.t;stamp(sc.stamp);sc.msgs.forEach(function(m){add(m[0],m[1])});setPips(n)}
+  function staticScene(n){var sc=scenes[n];setWho(sc.who);log.innerHTML='';clock.textContent=sc.time;T=sc.t;stamp(sc.stamp);sc.msgs.forEach(function(m){add(m[0],m[1])});setPips(n)}
   async function play(n){
     var id=++run, sc=scenes[n]; current=n; setPips(n);
-    log.innerHTML='';clock.textContent=sc.time;T=sc.t;stamp(sc.stamp);status.textContent='online';status.className='';
+    setWho(sc.who);log.innerHTML='';log.style.transform='none';clock.textContent=sc.time;T=sc.t;stamp(sc.stamp);status.textContent='online';status.className='';
     await wait(500); if(id!==run)return false;
     for(var i=0;i<sc.msgs.length;i++){
       var m=sc.msgs[i];
-      if(m[0]==='m'){await wait(800);if(id!==run)return false;add('m',m[1]);await wait(450)}
+      if(m[0]==='m'){await wait(600);if(id!==run)return false;if(!await typeIn(m[1],id))return false;setWho(sc.who);add('m',m[1]);await wait(450)}
+      else if(m[0]==='pm'||m[0]==='mv'){await wait(900);if(id!==run)return false;add(m[0],m[1]);await wait(500)}
       else{
         status.textContent='typing…';status.className='typing';
-        var d=document.createElement('div');d.className='b her dots';d.innerHTML='<i></i><i></i><i></i>';log.appendChild(d);
-        await wait(Math.min(1500,650+m[1].length*20));
+        var d=document.createElement('div');d.className='b her dots';if(m[0]==='hp'||m[0]==='v')d.style.display='none';d.innerHTML='<i></i><i></i><i></i>';log.appendChild(d);if(d.style.display!=='none')slide(d);
+        await wait(m[0]==='hp'||m[0]==='v'?1100:Math.min(1500,650+m[1].length*20));
         d.remove(); if(id!==run)return false;
         status.textContent='online';status.className='';
         add(m[0],m[1]);await wait(400);
