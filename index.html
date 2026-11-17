@@ -94,7 +94,7 @@ p{margin:0}
 .log{flex:1;display:flex;flex-direction:column;gap:5px;padding:12px 10px;overflow:hidden;justify-content:flex-end}
 .stamp{align-self:center;font-size:10.5px;color:var(--dim);font-weight:700;margin:4px 0 2px;display:flex;gap:5px;align-items:center;background:var(--hdr);padding:2px 9px;border-radius:9px}
 .stamp svg{width:9px;fill:var(--rose)}
-.b{max-width:80%;padding:7px 11px 5px;border-radius:16px;font-size:14px;line-height:1.3;animation:pop .28s cubic-bezier(.2,.9,.3,1.3)}
+.b{max-width:80%;padding:7px 11px 5px;border-radius:16px;font-size:14px;line-height:1.3;animation:pop .4s ease-out}
 .b small{display:block;font-size:10px;color:var(--dim);margin-top:2px}
 .her{align-self:flex-start;background:linear-gradient(160deg,var(--herA),var(--herB));color:var(--herInk);border-bottom-left-radius:5px}
 .me{align-self:flex-end;background:var(--mebg);color:var(--mink);border-bottom-right-radius:5px;box-shadow:0 1px 2px rgba(60,20,35,.08)}
@@ -216,7 +216,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
 
 .float{animation:bob 5s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
-@keyframes pop{from{transform:scale(.85) translateY(6px);opacity:.2}to{transform:none;opacity:1}}
+@keyframes pop{from{opacity:0}to{opacity:1}}
 @keyframes blink{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:.9;transform:translateY(-2px)}}
 @keyframes slide{to{transform:translateX(-50%)}}
 @keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(8px);opacity:0}100%{opacity:0}}
@@ -520,16 +520,19 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
     return svg+'</svg>';
   }
   var T='', run=0, current=-1;
-  function add(kind,text){
+  function add(kind,text,over){
     var el=document.createElement('div');
     if(kind==='v'||kind==='mv'){el.className='b '+(kind==='v'?'her':'me')+' voice';el.innerHTML='<span class="play"></span>'+wave()+'<span class="vt"><b>'+text+'</b><small>'+T.replace(' ','\u00a0')+'</small></span>'+(kind==='v'?'<span class="chev"></span>':'')}
     else if(kind==='pm'||kind==='hp'){el.className='b '+(kind==='pm'?'me':'her')+' pic';el.innerHTML='<img src="'+text+'" alt="">'}
     else{el.className='b '+(kind==='m'?'me':'her');el.textContent=text;var t=document.createElement('small');t.textContent=T;el.appendChild(t)}
-    log.appendChild(el);slide(el);return el;
+    if(over&&over.parentNode){ /* in the dots' place: the chat only moves by the difference */
+      var shown=over.style.display!=='none',oh=shown?over.offsetHeight:0;log.replaceChild(el,over);slide(el,el.offsetHeight+(shown?0:5)-oh)
+    }else{log.appendChild(el);slide(el)}
+    return el;
   }
-  function slide(el){ /* Nov 17 (Nick: "make the phone scroll up slowly"): the chat glides up by the new bubble's height */
+  function slide(el,by){ /* Nov 17 (Nick: "make the phone scroll up slowly"): the chat glides up by the new bubble's height */
     if(reduce)return;
-    var h=el.offsetHeight+5;log.style.transition='none';log.style.transform='translateY('+h+'px)';void log.offsetHeight;
+    var h=by==null?el.offsetHeight+5:by;if(h<=0)return;log.style.transition='none';log.style.transform='translateY('+h+'px)';void log.offsetHeight;
     log.style.transition='transform .55s cubic-bezier(.2,.7,.2,1)';log.style.transform='translateY(0)';
   }
   var whoName=document.getElementById('whoName'), whoAv=document.getElementById('whoAv'), cbox=document.getElementById('cbox');
@@ -558,9 +561,9 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
         status.textContent='typing…';status.className='typing';
         var d=document.createElement('div');d.className='b her dots';if(m[0]==='hp'||m[0]==='v')d.style.display='none';d.innerHTML='<i></i><i></i><i></i>';log.appendChild(d);if(d.style.display!=='none')slide(d);
         await wait(m[0]==='hp'||m[0]==='v'?1100:Math.min(1500,650+m[1].length*20));
-        d.remove(); if(id!==run)return false;
+        if(id!==run){d.remove();return false}
         status.textContent='online';status.className='';
-        add(m[0],m[1]);await wait(400);
+        add(m[0],m[1],d);await wait(400);
       }
       if(id!==run)return false;
     }
