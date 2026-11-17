@@ -54,6 +54,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17p
 .power .ask figcaption{padding:12px 14px;font-family:var(--display);font-weight:600;color:var(--head)}
 .power .way{border-radius:22px;padding:18px;background:var(--surface);border:1.5px solid var(--line);display:flex;flex-direction:column;gap:9px;min-width:0}
 .power .way>b{font-family:var(--display);font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.power .search{position:relative;max-height:340px;overflow:hidden}
+.power .search::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(transparent,var(--surface))}
+.power .search .ov{font-size:13px;font-weight:600;color:#3b5bdb}
+.power .search p,.power .search li{font-size:13.5px;color:var(--ink);line-height:1.45;margin:0}
+.power .search ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
 .power .search .res{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#3b5bdb;line-height:1.3}
 .power .search .res i{flex:none;width:14px;height:14px;border-radius:4px;background:var(--line);margin-top:2px}
 .power .search small{color:var(--muted);font-size:12px;margin-top:auto}
@@ -345,11 +350,10 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
     <div class="vs">
       <figure class="ask"><img src="img/demo-sign.webp" alt="A Japanese no-parking sign"><figcaption>"what does this sign say?"</figcaption></figure>
       <div class="way search"><b>Search</b>
-        <div class="res"><i></i><span>Japanese road signs explained: the complete guide</span></div>
-        <div class="res"><i></i><span>駐車禁止 meaning and pronunciation</span></div>
-        <div class="res"><i></i><span>Parking in Japan: 14 rules every visitor should know</span></div>
-        <div class="res"><i></i><span>Forum: what does this sign mean? (3 answers)</span></div>
-        <small>About 1,240,000 results</small></div>
+        <span class="ov">✦ AI overview</span>
+        <p>This is a <strong>Japanese No Parking sign</strong>. The circular symbol at the top indicates that <strong>parking is prohibited</strong>. In Japan, a blue circle with a single red diagonal slash means vehicles cannot be parked there, though brief stops for loading and unloading are generally permitted.</p>
+        <p>The rectangular supplemental plate mounted directly below the circular sign provides the exact text and time restrictions:</p>
+        <ul><li><strong>Japanese text:</strong> 駐車禁止 (chūsha kinshi), which translates directly to "No Parking."</li><li><strong>Time restriction:</strong> 8–18, meaning the rule is enforced from…</li></ul></div>
       <div class="way bot"><b>A chatbot</b>
         <p>Great question! This sign reads 駐車禁止 (chūsha kinshi), which means "No Parking." Here's what you need to know:</p>
         <ul><li><strong>Restriction:</strong> parking is not allowed in this area.</li><li><strong>Hours:</strong> the numbers 8–18 indicate the restriction applies from 8:00 to 18:00.</li><li><strong>Penalties:</strong> fines in Japan typically range from…</li></ul></div>
