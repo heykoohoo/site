@@ -111,6 +111,7 @@ p{margin:0}
 .av.ph3::before{content:attr(data-i)}
 .b.pic{padding:3px;max-width:58%;line-height:0}
 .b.pic img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:13px}
+.b.doc .dt{display:block;font-weight:600}.b.doc small.open{color:var(--dim);font-size:11px;margin-top:2px}
 .b.voice{display:flex;align-items:center;gap:7px;flex-wrap:nowrap;padding:6px 9px 6px 6px}
 .b.voice .play{width:32px;height:32px;border-radius:50%;background:#E2506A;display:grid;place-items:center;flex:none}
 .b.voice .play::after{content:"";border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}
@@ -489,7 +490,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   var pin='<svg viewBox="0 0 10 14"><use href="#pin"/></svg>';
   var scenes=[
     {who:{name:'Yuki'},time:'4:12',t:'04:12 PM',stamp:pin+'Sapporo · 4:12 pm',msgs:[['h',"wait. you're right by it"],['h','the lacquer chopsticks you wanted. department store across the street, 7th floor'],['h',"look for 漆器 on the sign. that's lacquerware"],['m','how did you know'],['h','you told me tuesday. go, they close at 8'],['pm','img/demo-chopsticks.webp'],['m','got them!!'],['h','ok those are gorgeous. told you']]},
-    {who:{name:'Vale',av:'vale'},time:'8:04',t:'08:04 AM',stamp:'Today 8:04 am',msgs:[['h','morning sam'],['hp','img/vale-coffee.webp'],['h',"how'd you sleep?"],['m','like a rock'],['m','how bout u'],['h','dreamed i was teaching spanish to a whole room of goldens'],['h','all named wilbur'],['h',"anyway. you've got that 10am, don't be late again"],['m','ok mom'],['h',"rude. i'm way cooler than your mom"]]},
+    {who:{name:'Vale',av:'vale'},time:'8:04',t:'08:04 AM',stamp:'Today 8:04 am',msgs:[['h','morning sam'],['hp','img/vale-coffee.webp'],['h',"how'd you sleep?"],['m','like a rock'],['m','how bout u'],['h','dreamed i was teaching spanish to a whole room of goldens'],['h','all named wilbur'],['h',"anyway. you've got that 10am, don't be late again"],['m','ok mom'],['h',"rude. i'm way cooler than your mom"],['h',"i prepped your notes for the meeting while you were sleeping"],['hd','10am meeting notes']]},
     {who:{name:'Maya',av:'ph3'},time:'12:41',t:'12:41 PM',stamp:pin+'SoHo · 12:41 pm',msgs:[['h',"you've been at that café since 9"],['h','lunch?'],['mv','0:04'],['h','ramen place, 4 min walk. left out the door'],['v','0:06'],['pm','img/demo-ramen.webp'],['m','ok you were right'],['h','i usually am']]}
   ];
 
@@ -531,6 +532,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   function add(kind,text,over){
     var el=document.createElement('div');
     if(kind==='v'||kind==='mv'){el.className='b '+(kind==='v'?'her':'me')+' voice';el.innerHTML='<span class="play"></span>'+wave()+'<span class="vt"><b>'+text+'</b><small>'+T.replace(' ','\u00a0')+'</small></span>'+(kind==='v'?'<span class="chev"></span>':'')}
+    else if(kind==='hd'){el.className='b her doc';el.innerHTML='<span class="dt">📄 '+text+'</span><small class="open">tap to open</small><small>'+T+'</small>'}
     else if(kind==='pm'||kind==='hp'){el.className='b '+(kind==='pm'?'me':'her')+' pic';el.innerHTML='<img src="'+text+'" alt="">'}
     else{el.className='b '+(kind==='m'?'me':'her');el.textContent=text;var t=document.createElement('small');t.textContent=T;el.appendChild(t)}
     if(over&&over.parentNode){ /* in the dots' place: the chat only moves by the difference */
@@ -567,8 +569,8 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
       else if(m[0]==='pm'||m[0]==='mv'){await wait(900);if(id!==run)return false;add(m[0],m[1]);await wait(500)}
       else{
         status.textContent='typing…';status.className='typing';
-        var d=document.createElement('div');d.className='b her dots';if(m[0]==='hp'||m[0]==='v')d.style.display='none';d.innerHTML='<i></i><i></i><i></i>';log.appendChild(d);if(d.style.display!=='none')slide(d);
-        await wait(m[0]==='hp'||m[0]==='v'?1100:Math.min(1500,650+m[1].length*20));
+        var d=document.createElement('div');d.className='b her dots';if(m[0]==='hp'||m[0]==='v'||m[0]==='hd')d.style.display='none';d.innerHTML='<i></i><i></i><i></i>';log.appendChild(d);if(d.style.display!=='none')slide(d);
+        await wait(m[0]==='hp'||m[0]==='v'||m[0]==='hd'?1100:Math.min(1500,650+m[1].length*20));
         if(id!==run){d.remove();return false}
         status.textContent='online';status.className='';
         add(m[0],m[1],d);await wait(400);
