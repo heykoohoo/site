@@ -47,13 +47,16 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17p
 .moments{padding-block:80px 64px}
 .moments h2{font-size:clamp(32px,4.6vw,54px);max-width:18ch}
 .moments h2 em{font-style:normal;background:linear-gradient(135deg,var(--rose),var(--berry));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.1em}
-.moments .mg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:36px}
-.moments figure{margin:0}
+.moments .mg{display:flex;gap:22px;margin-top:36px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 4px 26px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+.moments .mg::-webkit-scrollbar{display:none}
+.moments figure{margin:0;flex:0 0 min(460px,82vw);scroll-snap-align:start}
+.moments .nav{display:flex;gap:10px;margin-top:6px}
+.moments .nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--head);font-size:20px;cursor:pointer;display:grid;place-items:center}
+.moments .nav button:hover{border-color:var(--rose)}
 .moments img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:22px;display:block;box-shadow:0 18px 40px -22px rgba(58,18,54,.45)}
 .moments figcaption{margin-top:12px}
 .moments figcaption b{display:block;font-family:var(--display);font-weight:600;font-size:19px;color:var(--head)}
 .moments figcaption span{display:block;color:var(--muted);font-size:15px;margin-top:2px}
-@media (max-width:860px){.moments .mg{grid-template-columns:1fr 1fr}}
 .power{padding-block:96px 72px;text-align:center}
 .power h2{font-size:clamp(40px,6.4vw,76px);max-width:16ch;margin:0 auto}
 .power h2 em{display:block;font-size:.55em;margin-top:10px;padding-bottom:.18em;line-height:1.2;font-style:normal;background:linear-gradient(135deg,var(--rose),var(--berry));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -440,6 +443,7 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
       <figure><img src="img/moment-lisbon.webp" alt="A phone on a sofa next to a suitcase: she sends a four-day Lisbon plan" loading="lazy"><figcaption><b>Plans the whole trip.</b><span>No tourist traps. Ready in ten minutes.</span></figcaption></figure>
       <figure><img src="img/moment-seoul.webp" alt="A phone in a Seoul café: a photo of a golden retriever and her reply, BISCUIT!!" loading="lazy"><figcaption><b>Knows your people.</b><span>And your dog. Especially your dog.</span></figcaption></figure>
     </div>
+    <div class="nav"><button type="button" aria-label="Previous" data-d="-1">‹</button><button type="button" aria-label="Next" data-d="1">›</button></div>
   </section>
 
 
@@ -492,6 +496,10 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   /* her day reel: the video plays only while it's on screen */
   var vids=[].slice.call(document.querySelectorAll('.reel video'));
   if('IntersectionObserver' in window&&!reduce){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.5});vids.forEach(function(v){vio.observe(v)})}
+
+  /* the moments carousel: arrows step one photo */
+  (function(){var mg=document.querySelector('.moments .mg');if(!mg)return;
+    [].slice.call(document.querySelectorAll('.moments .nav button')).forEach(function(b){b.addEventListener('click',function(){var f=mg.querySelector('figure');mg.scrollBy({left:(+b.dataset.d)*((f?f.offsetWidth:400)+22),behavior:reduce?'auto':'smooth'})})})})();
 
   /* the phone */
   var WL=[['#14B8A6',.55,.021,1.2,0,'#F5B83D'],['#FF6B4A',.70,.034,-1.4,1.7,'#FF5A3C'],['#EC4899',.60,.047,1.2,3.4,'#FF4D7A'],['#8B5CF6',.50,.028,-1.4,5.1,'#FF8A3D']];
