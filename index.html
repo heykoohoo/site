@@ -199,6 +199,9 @@ p{margin:0}
 .ph img,.ph video{width:100%;height:100%;object-fit:cover;display:block}
 .ph .t{position:absolute;left:10px;top:10px;font-size:11px;font-weight:800;background:rgba(255,250,248,.88);color:var(--mink);padding:3px 9px;border-radius:99px;font-variant-numeric:tabular-nums}
 .ph .vb{position:absolute;right:10px;top:10px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:rgba(42,15,39,.55);padding:3px 9px 3px 7px;border-radius:99px}
+.ph:has(video){cursor:pointer}
+.ph:has(video)::after{content:"tap for sound";position:absolute;left:50%;bottom:12px;transform:translateX(-50%);font-size:11px;font-weight:800;color:#fff;background:rgba(42,15,39,.55);padding:3px 10px;border-radius:99px;white-space:nowrap}
+.ph.snd::after{content:"sound on"}
 .ph .vb::before{content:"";border-left:7px solid #fff;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
 .mo .b{animation:none;align-self:flex-start;max-width:100%;font-size:15px}
 .mo .b.me{align-self:flex-end}
@@ -556,6 +559,8 @@ a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8
   /* her day reel: the video plays only while it's on screen */
   var vids=[].slice.call(document.querySelectorAll('.reel video'));
   if('IntersectionObserver' in window&&!reduce){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.5});vids.forEach(function(v){vio.observe(v)})}
+  /* Nov 17: tap a video to hear her (one at a time); they start muted, as browsers require */
+  vids.forEach(function(v){v.parentNode.addEventListener('click',function(){var on=v.muted;vids.forEach(function(o){o.muted=true;o.parentNode.classList.remove('snd')});v.muted=!on;if(on){v.parentNode.classList.add('snd');var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}})});
 
   /* the phone */
   var WL=[['#14B8A6',.55,.021,1.2,0,'#F5B83D'],['#FF6B4A',.70,.034,-1.4,1.7,'#FF5A3C'],['#EC4899',.60,.047,1.2,3.4,'#FF4D7A'],['#8B5CF6',.50,.028,-1.4,5.1,'#FF8A3D']];
